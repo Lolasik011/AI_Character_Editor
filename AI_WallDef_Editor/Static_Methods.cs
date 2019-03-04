@@ -23,7 +23,7 @@ namespace AI_WallDef_Editor
         }
 
 
-        public static void CreateScript(AIEdit edit)
+        public static bool CreateScript(AIEdit edit)
         {
             if (File.Exists(edit.AI.ToString() + ".aidm"))
                 File.Delete(edit.AI.ToString() + ".aidm");
@@ -34,7 +34,7 @@ namespace AI_WallDef_Editor
                 var fileStream = new FileStream(edit.AI.ToString() + ".aidm", FileMode.CreateNew, FileAccess.Write);
                 var streamWriter = new StreamWriter(fileStream);
 
-                streamWriter.WriteLine("AI_Defence\n{");
+                streamWriter.WriteLine("AI_defence\n{");
                 streamWriter.WriteLine($"\tAI_Lord={edit.AI.ToString()};");
                 streamWriter.WriteLine($"\tTotalDef={edit.TotalDef};");
                 streamWriter.WriteLine($"\tWallDef={edit.WallDef};");
@@ -45,7 +45,7 @@ namespace AI_WallDef_Editor
                 {
                     Defender x = edit.Defenders[i];
                     var hexUnitType = ToHex((int)edit.Defenders[i].UnitType);
-                    streamWriter.WriteLine($"\t\t{edit.Defenders[i].DefUnit},{hexUnitType};");
+                    streamWriter.WriteLine($"\t\t{edit.Defenders[i].DefUnit}={hexUnitType};");
                 }
                 streamWriter.WriteLine("\t}");
 
@@ -56,27 +56,105 @@ namespace AI_WallDef_Editor
 
             }catch(Exception exc)
             {
-                
+                return false;
             }
+
+            return true;
         } 
 
-        public static void LoadScript(string scriptPath)
+        public static AIEdit LoadScript(string scriptPath)
         {
             if (!File.Exists(scriptPath) || Path.GetExtension(scriptPath) != ".aidm")
-                return;
+                return null;
 
             var edit = new AIEdit();
 
             var text = File.ReadAllLines(scriptPath);
             if (text.Length <= 1)
-                return;
+                return null;
             else
             {
                 Enum.TryParse(text[2].Split('=').Last().Split(';').First(), out edit.AI);
                 edit.TotalDef = Convert.ToInt32(text[3].Split('=').Last().Split(';').First());
                 edit.WallDef = Convert.ToInt32(text[4].Split('=').Last().Split(';').First());
-                
+
                 //Add the Defenders
+                var defender1 = text[7].Replace("\t", "").Replace(";", "").Split('=')[1];
+                var defender2 = text[8].Replace("\t", "").Replace(";", "").Split('=')[1];
+                var defender3 = text[9].Replace("\t", "").Replace(";", "").Split('=')[1];
+                var defender4 = text[10].Replace("\t", "").Replace(";", "").Split('=')[1];
+                var defender5 = text[11].Replace("\t", "").Replace(";", "").Split('=')[1];
+                var defender6 = text[12].Replace("\t", "").Replace(";", "").Split('=')[1];
+                var defender7 = text[13].Replace("\t", "").Replace(";", "").Split('=')[1];
+                var defender8 = text[14].Replace("\t", "").Replace(";", "").Split('=')[1];
+
+                Enums.UnitType unitType = Enums.UnitType.NONE;
+
+                var hex = Convert.ToInt32(FromHex(defender1));
+                unitType = (Enums.UnitType)hex;
+                edit.Defenders.Add(new Defender()
+                {
+                    DefUnit = Enums.DefUnit.DefUnit1,
+                    UnitType = unitType
+                });
+
+                hex = Convert.ToInt32(FromHex(defender2));
+                unitType = (Enums.UnitType)hex;
+                edit.Defenders.Add(new Defender()
+                {
+                    DefUnit = Enums.DefUnit.DefUnit2,
+                    UnitType = unitType
+                });
+
+                hex = Convert.ToInt32(FromHex(defender3));
+                unitType = (Enums.UnitType)hex;
+                edit.Defenders.Add(new Defender()
+                {
+                    DefUnit = Enums.DefUnit.DefUnit3,
+                    UnitType = unitType
+                });
+
+                hex = Convert.ToInt32(FromHex(defender4));
+                unitType = (Enums.UnitType)hex;
+                edit.Defenders.Add(new Defender()
+                {
+                    DefUnit = Enums.DefUnit.DefUnit4,
+                    UnitType = unitType
+                });
+
+                hex = Convert.ToInt32(FromHex(defender5));
+                unitType = (Enums.UnitType)hex;
+                edit.Defenders.Add(new Defender()
+                {
+                    DefUnit = Enums.DefUnit.DefUnit5,
+                    UnitType = unitType
+                });
+
+                hex = Convert.ToInt32(FromHex(defender6));
+                unitType = (Enums.UnitType)hex;
+                edit.Defenders.Add(new Defender()
+                {
+                    DefUnit = Enums.DefUnit.DefUnit6,
+                    UnitType = unitType
+                });
+
+                hex = Convert.ToInt32(FromHex(defender7));
+                unitType = (Enums.UnitType)hex;
+                edit.Defenders.Add(new Defender()
+                {
+                    DefUnit = Enums.DefUnit.DefUnit7,
+                    UnitType = unitType
+                });
+
+                hex = Convert.ToInt32(FromHex(defender8));
+                unitType = (Enums.UnitType)hex;
+                edit.Defenders.Add(new Defender()
+                {
+                    DefUnit = Enums.DefUnit.DefUnit8,
+                    UnitType = unitType
+                });
+
+                return edit;
             }
         }
     }

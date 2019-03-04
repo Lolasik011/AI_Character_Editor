@@ -41,7 +41,7 @@ namespace AI_WallDef_Editor
 
             //Static_Methods.CreateScript(edit);
 
-            //Static_Methods.LoadScript("Rat.aidm");
+            Static_Methods.LoadScript("Rat.aidm");
         }
 
         private void Fill_AI_Lords()
@@ -177,7 +177,13 @@ namespace AI_WallDef_Editor
                 UnitType = unitType
             });
 
-            Static_Methods.CreateScript(edit);
+            if (Static_Methods.CreateScript(edit))
+            {
+                MessageBox.Show("Script created successfully!");
+                //open?
+            }
+            else
+                MessageBox.Show("Script could not be created!");
         }
     }
 }
