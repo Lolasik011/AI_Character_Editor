@@ -18,6 +18,10 @@ namespace AI_WallDef_Editor
 
             this.Fill_AI_Lords();
             this.Fill_DefUnits();
+            this.trackBar_Patrols.Value = 10;
+            this.trackBar_WallDef.Value = 20;
+            this.txtBox_Patrols.Text = "10";
+            this.txtBox_WalLDef.Text = "20";
 
             //var edit = new AIEdit();
             //edit.AI = Enums.AI_Lord.Rat;
@@ -185,5 +189,46 @@ namespace AI_WallDef_Editor
             else
                 MessageBox.Show("Script could not be created!");
         }
+
+        private void open_Existing_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.DefaultExt = ".aidm";
+            fileDialog.CheckFileExists = true;
+            fileDialog.CheckPathExists = true;
+            fileDialog.Title = "Select an existing ai defence mod";
+            fileDialog.Multiselect = false;
+            fileDialog.Filter = "ai defence mod files (*.aidm)|*.aidm";
+            fileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+            if(fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                AIEdit aiEdit = Static_Methods.LoadScript(fileDialog.FileName);
+                if (aiEdit != null)
+                {
+                    MessageBox.Show("Script loaded successfully!");
+
+                    this.AI_Lords.SelectedIndex = (int)aiEdit.AI;
+                    this.trackBar_Patrols.Value = aiEdit.TotalDef - aiEdit.WallDef;
+                    this.txtBox_Patrols.Text = Convert.ToString(aiEdit.TotalDef - aiEdit.WallDef);
+                    this.trackBar_WallDef.Value = aiEdit.WallDef;
+                    this.txtBox_WalLDef.Text = Convert.ToString(aiEdit.WallDef);
+                    this.DefUnit1.SelectedItem = aiEdit.Defenders[0].UnitType.ToString();
+                    this.DefUnit2.SelectedItem = aiEdit.Defenders[1].UnitType.ToString();
+                    this.DefUnit3.SelectedItem = aiEdit.Defenders[2].UnitType.ToString();
+                    this.DefUnit4.SelectedItem = aiEdit.Defenders[3].UnitType.ToString();
+                    this.DefUnit5.SelectedItem = aiEdit.Defenders[4].UnitType.ToString();
+                    this.DefUnit6.SelectedItem = aiEdit.Defenders[5].UnitType.ToString();
+                    this.DefUnit7.SelectedItem = aiEdit.Defenders[6].UnitType.ToString();
+                    this.DefUnit8.SelectedItem = aiEdit.Defenders[7].UnitType.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Could not load the specified script!");
+                }
+                
+            }
+        }
     }
+
 }

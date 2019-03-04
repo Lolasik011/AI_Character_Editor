@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.AI_Lords = new System.Windows.Forms.ComboBox();
             this.lbl_AI_Lord = new System.Windows.Forms.Label();
             this.lbl_Patrols = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@
             this.DefUnit7 = new System.Windows.Forms.ComboBox();
             this.lbl_DefUnit8 = new System.Windows.Forms.Label();
             this.DefUnit8 = new System.Windows.Forms.ComboBox();
+            this.open_Existing = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Patrols)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_WallDef)).BeginInit();
             this.SuspendLayout();
@@ -282,11 +284,22 @@
             this.DefUnit8.Size = new System.Drawing.Size(121, 21);
             this.DefUnit8.TabIndex = 23;
             // 
+            // open_Existing
+            // 
+            this.open_Existing.Location = new System.Drawing.Point(569, 10);
+            this.open_Existing.Name = "open_Existing";
+            this.open_Existing.Size = new System.Drawing.Size(75, 23);
+            this.open_Existing.TabIndex = 25;
+            this.open_Existing.Text = "Open";
+            this.open_Existing.UseVisualStyleBackColor = true;
+            this.open_Existing.Click += new System.EventHandler(this.open_Existing_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 450);
+            this.Controls.Add(this.open_Existing);
             this.Controls.Add(this.lbl_DefUnit8);
             this.Controls.Add(this.DefUnit8);
             this.Controls.Add(this.lbl_DefUnit7);
@@ -312,8 +325,9 @@
             this.Controls.Add(this.lbl_Patrols);
             this.Controls.Add(this.lbl_AI_Lord);
             this.Controls.Add(this.AI_Lords);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "AI_Def_Editor";
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Patrols)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_WallDef)).EndInit();
             this.ResumeLayout(false);
@@ -348,6 +362,7 @@
         private System.Windows.Forms.ComboBox DefUnit7;
         private System.Windows.Forms.Label lbl_DefUnit8;
         private System.Windows.Forms.ComboBox DefUnit8;
+        private System.Windows.Forms.Button open_Existing;
     }
 }
 
