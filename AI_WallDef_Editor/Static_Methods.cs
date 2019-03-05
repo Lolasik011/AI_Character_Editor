@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Globalization;
+using Newtonsoft.Json;
 
 namespace AI_WallDef_Editor
 {
@@ -23,7 +24,7 @@ namespace AI_WallDef_Editor
         }
 
 
-        public static bool CreateScript(AIEdit edit)
+        /*public static bool CreateScript(AIEdit edit)
         {
             if (File.Exists(edit.AI.ToString() + ".aidm"))
                 File.Delete(edit.AI.ToString() + ".aidm");
@@ -60,9 +61,9 @@ namespace AI_WallDef_Editor
             }
 
             return true;
-        } 
+        }  */
 
-        public static AIEdit LoadScript(string scriptPath)
+        /*public static AIEdit LoadScript(string scriptPath)
         {
             if (!File.Exists(scriptPath) || Path.GetExtension(scriptPath) != ".aidm")
                 return null;
@@ -156,6 +157,34 @@ namespace AI_WallDef_Editor
 
                 return edit;
             }
+        } */
+
+        public static bool SaveScript(AIEdit edit)
+        {
+            if (edit != null)
+            {
+                try
+                {
+                    File.WriteAllText(edit.AI.ToString() + ".ais", JsonConvert.SerializeObject(edit));
+                }
+                catch
+                {
+                    return false;
+                }
+
+
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public static AIEdit LoadScript(string scriptPath)
+        {
+            if (!File.Exists(scriptPath))
+                return null;
+
+            return JsonConvert.DeserializeObject<AIEdit>(File.ReadAllText(scriptPath));
         }
     }
 }

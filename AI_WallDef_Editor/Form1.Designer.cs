@@ -327,7 +327,7 @@
             this.Controls.Add(this.AI_Lords);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "AI_Def_Editor";
+            this.Text = "AI_Script_Creator";
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Patrols)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_WallDef)).EndInit();
             this.ResumeLayout(false);

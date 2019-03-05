@@ -22,30 +22,6 @@ namespace AI_WallDef_Editor
             this.trackBar_WallDef.Value = 20;
             this.txtBox_Patrols.Text = "10";
             this.txtBox_WalLDef.Text = "20";
-
-            //var edit = new AIEdit();
-            //edit.AI = Enums.AI_Lord.Rat;
-            //edit.TotalDef = 100;
-            //edit.WallDef = 90;
-            //edit.Defenders.Add(new Defender()
-            //{
-            //    DefUnit = Enums.DefUnit.DefUnit1,
-            //    UnitType = Enums.UnitType.Spearmen
-            //});
-            //edit.Defenders.Add(new Defender()
-            //{
-            //    DefUnit = Enums.DefUnit.DefUnit2,
-            //    UnitType = Enums.UnitType.Spearmen
-            //});
-            //edit.Defenders.Add(new Defender()
-            //{
-            //    DefUnit = Enums.DefUnit.DefUnit3,
-            //    UnitType = Enums.UnitType.EuropeanArcher
-            //});
-
-            //Static_Methods.CreateScript(edit);
-
-            Static_Methods.LoadScript("Rat.aidm");
         }
 
         private void Fill_AI_Lords()
@@ -93,18 +69,19 @@ namespace AI_WallDef_Editor
             this.DefUnit8.SelectedIndex = 0;
         }
 
-        private void txtBox_Patrols_TextChanged(object sender, EventArgs e) => this.trackBar_Patrols.Value = Convert.ToInt32(this.txtBox_Patrols.Text);
-
-        private void trackBar_Patrols_Scroll(object sender, EventArgs e)
+        private void txtBox_Patrols_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                this.txtBox_Patrols.Text = Convert.ToString(this.trackBar_Patrols.Value);
-            }catch
+                this.trackBar_Patrols.Value = Convert.ToInt32(this.txtBox_Patrols.Text);
+            }
+            catch
             {
                 //User being stupid again...
             }
         }
+
+        private void trackBar_Patrols_Scroll(object sender, EventArgs e) => this.txtBox_Patrols.Text = Convert.ToString(this.trackBar_Patrols.Value);
 
         private void txtBox_Patrols_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -200,7 +177,7 @@ namespace AI_WallDef_Editor
                 UnitType = unitType
             });
 
-            if (Static_Methods.CreateScript(edit))
+            if (Static_Methods.SaveScript(edit))
             {
                 MessageBox.Show("Script created successfully!");
                 //open?
@@ -212,12 +189,12 @@ namespace AI_WallDef_Editor
         private void open_Existing_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.DefaultExt = ".aidm";
+            fileDialog.DefaultExt = ".ais";
             fileDialog.CheckFileExists = true;
             fileDialog.CheckPathExists = true;
-            fileDialog.Title = "Select an existing ai defence mod";
+            fileDialog.Title = "Select an existing ai script";
             fileDialog.Multiselect = false;
-            fileDialog.Filter = "ai defence mod files (*.aidm)|*.aidm";
+            fileDialog.Filter = "ai script files (*.ais)|*.ais";
             fileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             if(fileDialog.ShowDialog() == DialogResult.OK)
