@@ -95,7 +95,16 @@ namespace AI_WallDef_Editor
 
         private void txtBox_Patrols_TextChanged(object sender, EventArgs e) => this.trackBar_Patrols.Value = Convert.ToInt32(this.txtBox_Patrols.Text);
 
-        private void trackBar_Patrols_Scroll(object sender, EventArgs e) => this.txtBox_Patrols.Text = Convert.ToString(this.trackBar_Patrols.Value);
+        private void trackBar_Patrols_Scroll(object sender, EventArgs e)
+        {
+            try
+            {
+                this.txtBox_Patrols.Text = Convert.ToString(this.trackBar_Patrols.Value);
+            }catch
+            {
+                //User being stupid again...
+            }
+        }
 
         private void txtBox_Patrols_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -107,7 +116,17 @@ namespace AI_WallDef_Editor
 
         private void trackBar_WallDef_Scroll(object sender, EventArgs e) => this.txtBox_WalLDef.Text = Convert.ToString(this.trackBar_WallDef.Value);
 
-        private void txtBox_WalLDef_TextChanged(object sender, EventArgs e) => this.trackBar_WallDef.Value = Convert.ToInt32(this.txtBox_WalLDef.Text);
+        private void txtBox_WalLDef_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.trackBar_WallDef.Value = Convert.ToInt32(this.txtBox_WalLDef.Text);
+            }
+            catch 
+            {
+                //User is being stupid again...
+            }
+        }
 
         private void txtBox_WalLDef_KeyPress(object sender, KeyPressEventArgs e)
         {

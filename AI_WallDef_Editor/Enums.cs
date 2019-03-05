@@ -14,10 +14,12 @@ namespace AI_WallDef_Editor
             Snake,
             Pig,
             Wolf,
+
             Sultan,
             Caliph,
             Richard,
             Saladin,
+
             Wazir,
             Emir,
             Nizar,
@@ -30,11 +32,16 @@ namespace AI_WallDef_Editor
         public enum UnitType
         {
             NONE = 0x00,
-            EuropeanArcher = 0x16,
-            ArabianArcher = 0x46,
+            Tunnelers = 0x05,
+            EuropeanArchers = 0x16,
             Crossbowmen = 0x17,
             Spearmen = 0x18,
-            Pikemen = 0x19
+            Pikemen = 0x19,
+            Swordsmen = 0x1B,
+            Knights = 0x1C,
+            Engineers = 0x1E,
+            Monks = 0x25,
+            ArabianArchers = 0x46,
         }
 
         public enum DefUnit
