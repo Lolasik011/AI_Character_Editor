@@ -58,18 +58,20 @@
             this.pnl_Defence = new System.Windows.Forms.Panel();
             this.lbl_Defence = new System.Windows.Forms.Label();
             this.pnl_Offence = new System.Windows.Forms.Panel();
+            this.lbl_AttackForceIncreaseMultiplier = new System.Windows.Forms.Label();
+            this.txtBox_AttackForceIncreaseMultiplier = new System.Windows.Forms.TextBox();
             this.lbl_OffUnit8 = new System.Windows.Forms.Label();
             this.lbl_FirstAttackForceSize = new System.Windows.Forms.Label();
             this.OffUnit8 = new System.Windows.Forms.ComboBox();
-            this.lbl_AttackForceIncrease = new System.Windows.Forms.Label();
+            this.lbl_AttackForceIncreaseStatic = new System.Windows.Forms.Label();
             this.lbl_OffUnit7 = new System.Windows.Forms.Label();
             this.trackBar_FirstAttackForceSize = new System.Windows.Forms.TrackBar();
             this.OffUnit7 = new System.Windows.Forms.ComboBox();
-            this.trackBar_AttackForceIncrease = new System.Windows.Forms.TrackBar();
+            this.trackBar_AttackForceIncreaseStatic = new System.Windows.Forms.TrackBar();
             this.lbl_OffUnit6 = new System.Windows.Forms.Label();
             this.txtBox_FirstAttackForceSize = new System.Windows.Forms.TextBox();
             this.OffUnit6 = new System.Windows.Forms.ComboBox();
-            this.txtBox_AttackForceIncrease = new System.Windows.Forms.TextBox();
+            this.txtBox_AttackForceIncreaseStatic = new System.Windows.Forms.TextBox();
             this.lbl_OffUnit5 = new System.Windows.Forms.Label();
             this.OffUnit1 = new System.Windows.Forms.ComboBox();
             this.OffUnit5 = new System.Windows.Forms.ComboBox();
@@ -80,12 +82,13 @@
             this.lbl_OffUnit2 = new System.Windows.Forms.Label();
             this.lbl_OffUnit3 = new System.Windows.Forms.Label();
             this.OffUnit3 = new System.Windows.Forms.ComboBox();
+            this.lbl_Offence = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Patrols)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_WallDef)).BeginInit();
             this.pnl_Defence.SuspendLayout();
             this.pnl_Offence.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FirstAttackForceSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar_AttackForceIncrease)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_AttackForceIncreaseStatic)).BeginInit();
             this.SuspendLayout();
             // 
             // AI_Lords
@@ -358,24 +361,26 @@
             this.lbl_Defence.AutoSize = true;
             this.lbl_Defence.Location = new System.Drawing.Point(280, 53);
             this.lbl_Defence.Name = "lbl_Defence";
-            this.lbl_Defence.Size = new System.Drawing.Size(35, 13);
+            this.lbl_Defence.Size = new System.Drawing.Size(48, 13);
             this.lbl_Defence.TabIndex = 27;
-            this.lbl_Defence.Text = "label1";
+            this.lbl_Defence.Text = "Defence";
             // 
             // pnl_Offence
             // 
+            this.pnl_Offence.Controls.Add(this.lbl_AttackForceIncreaseMultiplier);
+            this.pnl_Offence.Controls.Add(this.txtBox_AttackForceIncreaseMultiplier);
             this.pnl_Offence.Controls.Add(this.lbl_OffUnit8);
             this.pnl_Offence.Controls.Add(this.lbl_FirstAttackForceSize);
             this.pnl_Offence.Controls.Add(this.OffUnit8);
-            this.pnl_Offence.Controls.Add(this.lbl_AttackForceIncrease);
+            this.pnl_Offence.Controls.Add(this.lbl_AttackForceIncreaseStatic);
             this.pnl_Offence.Controls.Add(this.lbl_OffUnit7);
             this.pnl_Offence.Controls.Add(this.trackBar_FirstAttackForceSize);
             this.pnl_Offence.Controls.Add(this.OffUnit7);
-            this.pnl_Offence.Controls.Add(this.trackBar_AttackForceIncrease);
+            this.pnl_Offence.Controls.Add(this.trackBar_AttackForceIncreaseStatic);
             this.pnl_Offence.Controls.Add(this.lbl_OffUnit6);
             this.pnl_Offence.Controls.Add(this.txtBox_FirstAttackForceSize);
             this.pnl_Offence.Controls.Add(this.OffUnit6);
-            this.pnl_Offence.Controls.Add(this.txtBox_AttackForceIncrease);
+            this.pnl_Offence.Controls.Add(this.txtBox_AttackForceIncreaseStatic);
             this.pnl_Offence.Controls.Add(this.lbl_OffUnit5);
             this.pnl_Offence.Controls.Add(this.OffUnit1);
             this.pnl_Offence.Controls.Add(this.OffUnit5);
@@ -388,13 +393,32 @@
             this.pnl_Offence.Controls.Add(this.OffUnit3);
             this.pnl_Offence.Location = new System.Drawing.Point(668, 70);
             this.pnl_Offence.Name = "pnl_Offence";
-            this.pnl_Offence.Size = new System.Drawing.Size(620, 266);
+            this.pnl_Offence.Size = new System.Drawing.Size(620, 335);
             this.pnl_Offence.TabIndex = 28;
+            this.pnl_Offence.Visible = false;
+            // 
+            // lbl_AttackForceIncreaseMultiplier
+            // 
+            this.lbl_AttackForceIncreaseMultiplier.AutoSize = true;
+            this.lbl_AttackForceIncreaseMultiplier.Location = new System.Drawing.Point(23, 161);
+            this.lbl_AttackForceIncreaseMultiplier.Name = "lbl_AttackForceIncreaseMultiplier";
+            this.lbl_AttackForceIncreaseMultiplier.Size = new System.Drawing.Size(91, 13);
+            this.lbl_AttackForceIncreaseMultiplier.TabIndex = 47;
+            this.lbl_AttackForceIncreaseMultiplier.Text = "Multiplier increase";
+            // 
+            // txtBox_AttackForceIncreaseMultiplier
+            // 
+            this.txtBox_AttackForceIncreaseMultiplier.Location = new System.Drawing.Point(129, 161);
+            this.txtBox_AttackForceIncreaseMultiplier.Name = "txtBox_AttackForceIncreaseMultiplier";
+            this.txtBox_AttackForceIncreaseMultiplier.Size = new System.Drawing.Size(77, 20);
+            this.txtBox_AttackForceIncreaseMultiplier.TabIndex = 49;
+            this.txtBox_AttackForceIncreaseMultiplier.Text = "1";
+            this.txtBox_AttackForceIncreaseMultiplier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // lbl_OffUnit8
             // 
             this.lbl_OffUnit8.AutoSize = true;
-            this.lbl_OffUnit8.Location = new System.Drawing.Point(491, 214);
+            this.lbl_OffUnit8.Location = new System.Drawing.Point(491, 279);
             this.lbl_OffUnit8.Name = "lbl_OffUnit8";
             this.lbl_OffUnit8.Size = new System.Drawing.Size(46, 13);
             this.lbl_OffUnit8.TabIndex = 46;
@@ -412,24 +436,24 @@
             // OffUnit8
             // 
             this.OffUnit8.FormattingEnabled = true;
-            this.OffUnit8.Location = new System.Drawing.Point(463, 230);
+            this.OffUnit8.Location = new System.Drawing.Point(463, 295);
             this.OffUnit8.Name = "OffUnit8";
             this.OffUnit8.Size = new System.Drawing.Size(121, 21);
             this.OffUnit8.TabIndex = 45;
             // 
-            // lbl_AttackForceIncrease
+            // lbl_AttackForceIncreaseStatic
             // 
-            this.lbl_AttackForceIncrease.AutoSize = true;
-            this.lbl_AttackForceIncrease.Location = new System.Drawing.Point(23, 89);
-            this.lbl_AttackForceIncrease.Name = "lbl_AttackForceIncrease";
-            this.lbl_AttackForceIncrease.Size = new System.Drawing.Size(129, 13);
-            this.lbl_AttackForceIncrease.TabIndex = 26;
-            this.lbl_AttackForceIncrease.Text = "Attack force size increase";
+            this.lbl_AttackForceIncreaseStatic.AutoSize = true;
+            this.lbl_AttackForceIncreaseStatic.Location = new System.Drawing.Point(23, 89);
+            this.lbl_AttackForceIncreaseStatic.Name = "lbl_AttackForceIncreaseStatic";
+            this.lbl_AttackForceIncreaseStatic.Size = new System.Drawing.Size(77, 13);
+            this.lbl_AttackForceIncreaseStatic.TabIndex = 26;
+            this.lbl_AttackForceIncreaseStatic.Text = "Static increase";
             // 
             // lbl_OffUnit7
             // 
             this.lbl_OffUnit7.AutoSize = true;
-            this.lbl_OffUnit7.Location = new System.Drawing.Point(346, 214);
+            this.lbl_OffUnit7.Location = new System.Drawing.Point(346, 279);
             this.lbl_OffUnit7.Name = "lbl_OffUnit7";
             this.lbl_OffUnit7.Size = new System.Drawing.Size(46, 13);
             this.lbl_OffUnit7.TabIndex = 44;
@@ -450,27 +474,27 @@
             // OffUnit7
             // 
             this.OffUnit7.FormattingEnabled = true;
-            this.OffUnit7.Location = new System.Drawing.Point(318, 230);
+            this.OffUnit7.Location = new System.Drawing.Point(318, 295);
             this.OffUnit7.Name = "OffUnit7";
             this.OffUnit7.Size = new System.Drawing.Size(121, 21);
             this.OffUnit7.TabIndex = 43;
             // 
-            // trackBar_AttackForceIncrease
+            // trackBar_AttackForceIncreaseStatic
             // 
-            this.trackBar_AttackForceIncrease.Location = new System.Drawing.Point(145, 89);
-            this.trackBar_AttackForceIncrease.Maximum = 300;
-            this.trackBar_AttackForceIncrease.Minimum = 1;
-            this.trackBar_AttackForceIncrease.Name = "trackBar_AttackForceIncrease";
-            this.trackBar_AttackForceIncrease.Size = new System.Drawing.Size(408, 45);
-            this.trackBar_AttackForceIncrease.TabIndex = 28;
-            this.trackBar_AttackForceIncrease.TickFrequency = 5;
-            this.trackBar_AttackForceIncrease.Value = 20;
-            this.trackBar_AttackForceIncrease.Scroll += new System.EventHandler(this.trackB_AttackForceIncrease_Scroll);
+            this.trackBar_AttackForceIncreaseStatic.Location = new System.Drawing.Point(145, 89);
+            this.trackBar_AttackForceIncreaseStatic.Maximum = 300;
+            this.trackBar_AttackForceIncreaseStatic.Minimum = 1;
+            this.trackBar_AttackForceIncreaseStatic.Name = "trackBar_AttackForceIncreaseStatic";
+            this.trackBar_AttackForceIncreaseStatic.Size = new System.Drawing.Size(408, 45);
+            this.trackBar_AttackForceIncreaseStatic.TabIndex = 28;
+            this.trackBar_AttackForceIncreaseStatic.TickFrequency = 5;
+            this.trackBar_AttackForceIncreaseStatic.Value = 20;
+            this.trackBar_AttackForceIncreaseStatic.Scroll += new System.EventHandler(this.trackB_AttackForceIncrease_Scroll);
             // 
             // lbl_OffUnit6
             // 
             this.lbl_OffUnit6.AutoSize = true;
-            this.lbl_OffUnit6.Location = new System.Drawing.Point(209, 214);
+            this.lbl_OffUnit6.Location = new System.Drawing.Point(209, 279);
             this.lbl_OffUnit6.Name = "lbl_OffUnit6";
             this.lbl_OffUnit6.Size = new System.Drawing.Size(46, 13);
             this.lbl_OffUnit6.TabIndex = 42;
@@ -489,25 +513,25 @@
             // OffUnit6
             // 
             this.OffUnit6.FormattingEnabled = true;
-            this.OffUnit6.Location = new System.Drawing.Point(181, 230);
+            this.OffUnit6.Location = new System.Drawing.Point(181, 295);
             this.OffUnit6.Name = "OffUnit6";
             this.OffUnit6.Size = new System.Drawing.Size(121, 21);
             this.OffUnit6.TabIndex = 41;
             // 
-            // txtBox_AttackForceIncrease
+            // txtBox_AttackForceIncreaseStatic
             // 
-            this.txtBox_AttackForceIncrease.Location = new System.Drawing.Point(296, 135);
-            this.txtBox_AttackForceIncrease.Name = "txtBox_AttackForceIncrease";
-            this.txtBox_AttackForceIncrease.Size = new System.Drawing.Size(77, 20);
-            this.txtBox_AttackForceIncrease.TabIndex = 30;
-            this.txtBox_AttackForceIncrease.Text = "1";
-            this.txtBox_AttackForceIncrease.TextChanged += new System.EventHandler(this.txtBox_AttackForceIncrease_TextChanged);
-            this.txtBox_AttackForceIncrease.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_AttackForceIncrease_KeyPress);
+            this.txtBox_AttackForceIncreaseStatic.Location = new System.Drawing.Point(296, 135);
+            this.txtBox_AttackForceIncreaseStatic.Name = "txtBox_AttackForceIncreaseStatic";
+            this.txtBox_AttackForceIncreaseStatic.Size = new System.Drawing.Size(77, 20);
+            this.txtBox_AttackForceIncreaseStatic.TabIndex = 30;
+            this.txtBox_AttackForceIncreaseStatic.Text = "1";
+            this.txtBox_AttackForceIncreaseStatic.TextChanged += new System.EventHandler(this.txtBox_AttackForceIncrease_TextChanged);
+            this.txtBox_AttackForceIncreaseStatic.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_AttackForceIncrease_KeyPress);
             // 
             // lbl_OffUnit5
             // 
             this.lbl_OffUnit5.AutoSize = true;
-            this.lbl_OffUnit5.Location = new System.Drawing.Point(68, 214);
+            this.lbl_OffUnit5.Location = new System.Drawing.Point(68, 279);
             this.lbl_OffUnit5.Name = "lbl_OffUnit5";
             this.lbl_OffUnit5.Size = new System.Drawing.Size(46, 13);
             this.lbl_OffUnit5.TabIndex = 40;
@@ -516,7 +540,7 @@
             // OffUnit1
             // 
             this.OffUnit1.FormattingEnabled = true;
-            this.OffUnit1.Location = new System.Drawing.Point(40, 190);
+            this.OffUnit1.Location = new System.Drawing.Point(40, 255);
             this.OffUnit1.Name = "OffUnit1";
             this.OffUnit1.Size = new System.Drawing.Size(121, 21);
             this.OffUnit1.TabIndex = 31;
@@ -524,7 +548,7 @@
             // OffUnit5
             // 
             this.OffUnit5.FormattingEnabled = true;
-            this.OffUnit5.Location = new System.Drawing.Point(40, 230);
+            this.OffUnit5.Location = new System.Drawing.Point(40, 295);
             this.OffUnit5.Name = "OffUnit5";
             this.OffUnit5.Size = new System.Drawing.Size(121, 21);
             this.OffUnit5.TabIndex = 39;
@@ -532,7 +556,7 @@
             // lbl_OffUnit1
             // 
             this.lbl_OffUnit1.AutoSize = true;
-            this.lbl_OffUnit1.Location = new System.Drawing.Point(68, 174);
+            this.lbl_OffUnit1.Location = new System.Drawing.Point(68, 239);
             this.lbl_OffUnit1.Name = "lbl_OffUnit1";
             this.lbl_OffUnit1.Size = new System.Drawing.Size(46, 13);
             this.lbl_OffUnit1.TabIndex = 32;
@@ -541,7 +565,7 @@
             // lbl_OffUnit4
             // 
             this.lbl_OffUnit4.AutoSize = true;
-            this.lbl_OffUnit4.Location = new System.Drawing.Point(491, 174);
+            this.lbl_OffUnit4.Location = new System.Drawing.Point(491, 239);
             this.lbl_OffUnit4.Name = "lbl_OffUnit4";
             this.lbl_OffUnit4.Size = new System.Drawing.Size(46, 13);
             this.lbl_OffUnit4.TabIndex = 38;
@@ -550,7 +574,7 @@
             // OffUnit2
             // 
             this.OffUnit2.FormattingEnabled = true;
-            this.OffUnit2.Location = new System.Drawing.Point(181, 190);
+            this.OffUnit2.Location = new System.Drawing.Point(181, 255);
             this.OffUnit2.Name = "OffUnit2";
             this.OffUnit2.Size = new System.Drawing.Size(121, 21);
             this.OffUnit2.TabIndex = 33;
@@ -558,7 +582,7 @@
             // OffUnit4
             // 
             this.OffUnit4.FormattingEnabled = true;
-            this.OffUnit4.Location = new System.Drawing.Point(463, 190);
+            this.OffUnit4.Location = new System.Drawing.Point(463, 255);
             this.OffUnit4.Name = "OffUnit4";
             this.OffUnit4.Size = new System.Drawing.Size(121, 21);
             this.OffUnit4.TabIndex = 37;
@@ -566,7 +590,7 @@
             // lbl_OffUnit2
             // 
             this.lbl_OffUnit2.AutoSize = true;
-            this.lbl_OffUnit2.Location = new System.Drawing.Point(206, 174);
+            this.lbl_OffUnit2.Location = new System.Drawing.Point(206, 239);
             this.lbl_OffUnit2.Name = "lbl_OffUnit2";
             this.lbl_OffUnit2.Size = new System.Drawing.Size(46, 13);
             this.lbl_OffUnit2.TabIndex = 34;
@@ -575,7 +599,7 @@
             // lbl_OffUnit3
             // 
             this.lbl_OffUnit3.AutoSize = true;
-            this.lbl_OffUnit3.Location = new System.Drawing.Point(346, 174);
+            this.lbl_OffUnit3.Location = new System.Drawing.Point(346, 239);
             this.lbl_OffUnit3.Name = "lbl_OffUnit3";
             this.lbl_OffUnit3.Size = new System.Drawing.Size(46, 13);
             this.lbl_OffUnit3.TabIndex = 36;
@@ -584,16 +608,27 @@
             // OffUnit3
             // 
             this.OffUnit3.FormattingEnabled = true;
-            this.OffUnit3.Location = new System.Drawing.Point(318, 190);
+            this.OffUnit3.Location = new System.Drawing.Point(318, 255);
             this.OffUnit3.Name = "OffUnit3";
             this.OffUnit3.Size = new System.Drawing.Size(121, 21);
             this.OffUnit3.TabIndex = 35;
+            // 
+            // lbl_Offence
+            // 
+            this.lbl_Offence.AutoSize = true;
+            this.lbl_Offence.Location = new System.Drawing.Point(945, 53);
+            this.lbl_Offence.Name = "lbl_Offence";
+            this.lbl_Offence.Size = new System.Drawing.Size(45, 13);
+            this.lbl_Offence.TabIndex = 29;
+            this.lbl_Offence.Text = "Offence";
+            this.lbl_Offence.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1462, 640);
+            this.Controls.Add(this.lbl_Offence);
             this.Controls.Add(this.lbl_AI_Lord);
             this.Controls.Add(this.AI_Lords);
             this.Controls.Add(this.pnl_Offence);
@@ -611,7 +646,7 @@
             this.pnl_Offence.ResumeLayout(false);
             this.pnl_Offence.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FirstAttackForceSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar_AttackForceIncrease)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_AttackForceIncreaseStatic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -651,15 +686,15 @@
         private System.Windows.Forms.Label lbl_OffUnit8;
         private System.Windows.Forms.Label lbl_FirstAttackForceSize;
         private System.Windows.Forms.ComboBox OffUnit8;
-        private System.Windows.Forms.Label lbl_AttackForceIncrease;
+        private System.Windows.Forms.Label lbl_AttackForceIncreaseStatic;
         private System.Windows.Forms.Label lbl_OffUnit7;
         private System.Windows.Forms.TrackBar trackBar_FirstAttackForceSize;
         private System.Windows.Forms.ComboBox OffUnit7;
-        private System.Windows.Forms.TrackBar trackBar_AttackForceIncrease;
+        private System.Windows.Forms.TrackBar trackBar_AttackForceIncreaseStatic;
         private System.Windows.Forms.Label lbl_OffUnit6;
         private System.Windows.Forms.TextBox txtBox_FirstAttackForceSize;
         private System.Windows.Forms.ComboBox OffUnit6;
-        private System.Windows.Forms.TextBox txtBox_AttackForceIncrease;
+        private System.Windows.Forms.TextBox txtBox_AttackForceIncreaseStatic;
         private System.Windows.Forms.Label lbl_OffUnit5;
         private System.Windows.Forms.ComboBox OffUnit1;
         private System.Windows.Forms.ComboBox OffUnit5;
@@ -670,6 +705,9 @@
         private System.Windows.Forms.Label lbl_OffUnit2;
         private System.Windows.Forms.Label lbl_OffUnit3;
         private System.Windows.Forms.ComboBox OffUnit3;
+        private System.Windows.Forms.Label lbl_AttackForceIncreaseMultiplier;
+        private System.Windows.Forms.TextBox txtBox_AttackForceIncreaseMultiplier;
+        private System.Windows.Forms.Label lbl_Offence;
     }
 }
 

@@ -21,8 +21,13 @@ namespace AI_WallDef_Editor
             this.Fill_DefUnits();
             this.trackBar_Patrols.Value = 10;
             this.trackBar_WallDef.Value = 20;
+            this.trackBar_FirstAttackForceSize.Value = 10;
+            this.trackBar_AttackForceIncreaseStatic.Value = 7;
+            this.txtBox_AttackForceIncreaseMultiplier.Text =" 0.5";
             this.txtBox_Patrols.Text = "10";
             this.txtBox_WalLDef.Text = "20";
+            this.txtBox_FirstAttackForceSize.Text = "10";
+            this.txtBox_AttackForceIncreaseStatic.Text = "7";
         }
 
         private void Fill_AI_Lords()
@@ -142,12 +147,15 @@ namespace AI_WallDef_Editor
 
             edit.RecruitingBehaviour.WallDef = this.trackBar_WallDef.Value;
             edit.RecruitingBehaviour.TotalDef = this.trackBar_WallDef.Value + this.trackBar_Patrols.Value;
-
-            edit.RecruitingBehaviour.FirstAttackForceSize = this.trackBar_FirstAttackForceSize.Value;
-            edit.RecruitingBehaviour.TotalDef = this.trackBar_AttackForceIncrease.Value;
-
-            this.LoadOffUnits(edit);
             this.LoadDefUnits(edit);
+
+
+            //Until more info from Nere
+            /*
+            edit.RecruitingBehaviour.FirstAttackForceSize = this.trackBar_FirstAttackForceSize.Value;
+            edit.RecruitingBehaviour.AttackForceIncreaseStatic = this.trackBar_AttackForceIncreaseStatic.Value;
+            edit.RecruitingBehaviour.AttackForceIncreaseMultiplier = Convert.ToDouble(this.txtBox_AttackForceIncreaseMultiplier.Text); 
+            this.LoadOffUnits(edit); */
 
             if (Static_Methods.SaveScript(edit))
             {
@@ -336,13 +344,13 @@ namespace AI_WallDef_Editor
             }
         }
 
-        private void trackB_AttackForceIncrease_Scroll(object sender, EventArgs e) => this.txtBox_AttackForceIncrease.Text = Convert.ToString(this.trackBar_AttackForceIncrease.Value);
+        private void trackB_AttackForceIncrease_Scroll(object sender, EventArgs e) => this.txtBox_AttackForceIncreaseStatic.Text = Convert.ToString(this.trackBar_AttackForceIncreaseStatic.Value);
 
         private void txtBox_AttackForceIncrease_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                this.trackBar_AttackForceIncrease.Value = Convert.ToInt32(this.txtBox_WalLDef.Text);
+                this.trackBar_AttackForceIncreaseStatic.Value = Convert.ToInt32(this.txtBox_WalLDef.Text);
             }
             catch
             {
@@ -364,6 +372,25 @@ namespace AI_WallDef_Editor
             {
                 e.Handled = true;
             }
+        }
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
         }
     }
 

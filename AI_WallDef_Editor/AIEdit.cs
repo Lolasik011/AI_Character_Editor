@@ -47,7 +47,7 @@ namespace AI_WallDef_Editor
         public List<AttackingUnit> Attackers = new List<AttackingUnit>();
         public int FirstAttackForceSize;
         public int AttackForceIncreaseStatic; 
-        public int AttackForceIncreaseMultiplier;
+        public double AttackForceIncreaseMultiplier;
     }
 
 
