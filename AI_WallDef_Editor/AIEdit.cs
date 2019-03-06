@@ -9,9 +9,9 @@ namespace AI_WallDef_Editor
     public class AIEdit
     {
         public Enums.AI_Lord AI;
-        public List<DefendingUnit> Defenders = new List<DefendingUnit>();
-        public int TotalDef;
-        public int WallDef;
+        //public List<DefendingUnit> Defenders = new List<DefendingUnit>();
+        //public int TotalDef;
+        //public int WallDef;
 
         public MarketBehaviour MarketBehaviour;
         public RecruitingBehaviour RecruitingBehaviour;
@@ -25,7 +25,7 @@ namespace AI_WallDef_Editor
     public class AttackingUnit
     {
         public Enums.UnitType UnitType;
-        public Enums.OffUnit AttackUnit;
+        public Enums.OffUnit OffUnit;
     }
 
     public class MarketBehaviour

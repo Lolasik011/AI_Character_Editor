@@ -17,6 +17,7 @@ namespace AI_WallDef_Editor
             InitializeComponent();
 
             this.Fill_AI_Lords();
+            this.Fill_OffUnits();
             this.Fill_DefUnits();
             this.trackBar_Patrols.Value = 10;
             this.trackBar_WallDef.Value = 20;
@@ -68,6 +69,26 @@ namespace AI_WallDef_Editor
             this.DefUnit7.SelectedIndex = 0;
             this.DefUnit8.SelectedIndex = 0;
         }
+        private void Fill_OffUnits()
+        {
+            this.OffUnit1.Items.AddRange(Static_Methods.GetUnitTypes().ToArray());
+            this.OffUnit2.Items.AddRange(Static_Methods.GetUnitTypes().ToArray());
+            this.OffUnit3.Items.AddRange(Static_Methods.GetUnitTypes().ToArray());
+            this.OffUnit4.Items.AddRange(Static_Methods.GetUnitTypes().ToArray());
+            this.OffUnit5.Items.AddRange(Static_Methods.GetUnitTypes().ToArray());
+            this.OffUnit6.Items.AddRange(Static_Methods.GetUnitTypes().ToArray());
+            this.OffUnit7.Items.AddRange(Static_Methods.GetUnitTypes().ToArray());
+            this.OffUnit8.Items.AddRange(Static_Methods.GetUnitTypes().ToArray());
+
+            this.OffUnit1.SelectedIndex = 0;
+            this.OffUnit2.SelectedIndex = 0;
+            this.OffUnit3.SelectedIndex = 0;
+            this.OffUnit4.SelectedIndex = 0;
+            this.OffUnit5.SelectedIndex = 0;
+            this.OffUnit6.SelectedIndex = 0;
+            this.OffUnit7.SelectedIndex = 0;
+            this.OffUnit8.SelectedIndex = 0;
+        }
 
         private void txtBox_Patrols_TextChanged(object sender, EventArgs e)
         {
@@ -117,65 +138,16 @@ namespace AI_WallDef_Editor
         {
             var edit = new AIEdit();
             Enum.TryParse(this.AI_Lords.GetItemText(this.AI_Lords.SelectedItem), out edit.AI);
-            edit.WallDef = this.trackBar_WallDef.Value;
-            edit.TotalDef = this.trackBar_WallDef.Value + this.trackBar_Patrols.Value;
+            edit.RecruitingBehaviour = new RecruitingBehaviour();
 
-            var unitType = Enums.UnitType.NONE;
-            Enum.TryParse(this.DefUnit1.GetItemText(this.DefUnit1.SelectedItem), out unitType);
-            edit.Defenders.Add(new DefendingUnit()
-            {
-                DefUnit = Enums.DefUnit.DefUnit1,
-                UnitType = unitType
-            });
+            edit.RecruitingBehaviour.WallDef = this.trackBar_WallDef.Value;
+            edit.RecruitingBehaviour.TotalDef = this.trackBar_WallDef.Value + this.trackBar_Patrols.Value;
 
-            Enum.TryParse(this.DefUnit2.GetItemText(this.DefUnit2.SelectedItem), out unitType);
-            edit.Defenders.Add(new DefendingUnit()
-            {
-                DefUnit = Enums.DefUnit.DefUnit2,
-                UnitType = unitType
-            });
+            edit.RecruitingBehaviour.FirstAttackForceSize = this.trackBar_FirstAttackForceSize.Value;
+            edit.RecruitingBehaviour.TotalDef = this.trackBar_AttackForceIncrease.Value;
 
-            Enum.TryParse(this.DefUnit3.GetItemText(this.DefUnit3.SelectedItem), out unitType);
-            edit.Defenders.Add(new DefendingUnit()
-            {
-                DefUnit = Enums.DefUnit.DefUnit3,
-                UnitType = unitType
-            });
-
-            Enum.TryParse(this.DefUnit4.GetItemText(this.DefUnit4.SelectedItem), out unitType);
-            edit.Defenders.Add(new DefendingUnit()
-            {
-                DefUnit = Enums.DefUnit.DefUnit4,
-                UnitType = unitType
-            });
-
-            Enum.TryParse(this.DefUnit5.GetItemText(this.DefUnit5.SelectedItem), out unitType);
-            edit.Defenders.Add(new DefendingUnit()
-            {
-                DefUnit = Enums.DefUnit.DefUnit5,
-                UnitType = unitType
-            });
-
-            Enum.TryParse(this.DefUnit6.GetItemText(this.DefUnit6.SelectedItem), out unitType);
-            edit.Defenders.Add(new DefendingUnit()
-            {
-                DefUnit = Enums.DefUnit.DefUnit6,
-                UnitType = unitType
-            });
-
-            Enum.TryParse(this.DefUnit7.GetItemText(this.DefUnit7.SelectedItem), out unitType);
-            edit.Defenders.Add(new DefendingUnit()
-            {
-                DefUnit = Enums.DefUnit.DefUnit7,
-                UnitType = unitType
-            });
-
-            Enum.TryParse(this.DefUnit8.GetItemText(this.DefUnit8.SelectedItem), out unitType);
-            edit.Defenders.Add(new DefendingUnit()
-            {
-                DefUnit = Enums.DefUnit.DefUnit8,
-                UnitType = unitType
-            });
+            this.LoadOffUnits(edit);
+            this.LoadDefUnits(edit);
 
             if (Static_Methods.SaveScript(edit))
             {
@@ -184,6 +156,126 @@ namespace AI_WallDef_Editor
             }
             else
                 MessageBox.Show("Script could not be created!");
+        }
+
+        private void LoadDefUnits(AIEdit edit)
+        {
+            Enums.UnitType unitType = Enums.UnitType.NONE;
+            Enum.TryParse(this.DefUnit1.GetItemText(this.DefUnit1.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Defenders.Add(new DefendingUnit()
+            {
+                DefUnit = Enums.DefUnit.DefUnit1,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.DefUnit2.GetItemText(this.DefUnit2.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Defenders.Add(new DefendingUnit()
+            {
+                DefUnit = Enums.DefUnit.DefUnit2,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.DefUnit3.GetItemText(this.DefUnit3.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Defenders.Add(new DefendingUnit()
+            {
+                DefUnit = Enums.DefUnit.DefUnit3,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.DefUnit4.GetItemText(this.DefUnit4.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Defenders.Add(new DefendingUnit()
+            {
+                DefUnit = Enums.DefUnit.DefUnit4,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.DefUnit5.GetItemText(this.DefUnit5.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Defenders.Add(new DefendingUnit()
+            {
+                DefUnit = Enums.DefUnit.DefUnit5,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.DefUnit6.GetItemText(this.DefUnit6.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Defenders.Add(new DefendingUnit()
+            {
+                DefUnit = Enums.DefUnit.DefUnit6,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.DefUnit7.GetItemText(this.DefUnit7.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Defenders.Add(new DefendingUnit()
+            {
+                DefUnit = Enums.DefUnit.DefUnit7,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.DefUnit8.GetItemText(this.DefUnit8.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Defenders.Add(new DefendingUnit()
+            {
+                DefUnit = Enums.DefUnit.DefUnit8,
+                UnitType = unitType
+            });
+        }
+
+        private void LoadOffUnits(AIEdit edit)
+        {
+            Enums.UnitType unitType = Enums.UnitType.NONE;
+            Enum.TryParse(this.OffUnit1.GetItemText(this.OffUnit1.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Attackers.Add(new AttackingUnit()
+            {
+                OffUnit = Enums.OffUnit.OfffUnit1,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.OffUnit2.GetItemText(this.OffUnit2.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Attackers.Add(new AttackingUnit()
+            {
+                OffUnit = Enums.OffUnit.OffUnit2,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.OffUnit3.GetItemText(this.OffUnit3.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Attackers.Add(new AttackingUnit()
+            {
+                OffUnit = Enums.OffUnit.OffUnit3,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.OffUnit4.GetItemText(this.OffUnit4.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Attackers.Add(new AttackingUnit()
+            {
+                OffUnit = Enums.OffUnit.OffUnit4,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.OffUnit5.GetItemText(this.OffUnit5.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Attackers.Add(new AttackingUnit()
+            {
+                OffUnit = Enums.OffUnit.OffUnit5,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.OffUnit6.GetItemText(this.OffUnit6.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Attackers.Add(new AttackingUnit()
+            {
+                OffUnit = Enums.OffUnit.OffUnit6,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.OffUnit7.GetItemText(this.OffUnit7.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Attackers.Add(new AttackingUnit()
+            {
+                OffUnit = Enums.OffUnit.OffUnit7,
+                UnitType = unitType
+            });
+
+            Enum.TryParse(this.OffUnit8.GetItemText(this.OffUnit8.SelectedItem), out unitType);
+            edit.RecruitingBehaviour.Attackers.Add(new AttackingUnit()
+            {
+                OffUnit = Enums.OffUnit.OffUnit8,
+                UnitType = unitType
+            });
         }
 
         private void open_Existing_Click(object sender, EventArgs e)
@@ -200,29 +292,77 @@ namespace AI_WallDef_Editor
             if(fileDialog.ShowDialog() == DialogResult.OK)
             {
                 AIEdit aiEdit = Static_Methods.LoadScript(fileDialog.FileName);
+
                 if (aiEdit != null)
                 {
                     MessageBox.Show("Script loaded successfully!");
 
                     this.AI_Lords.SelectedIndex = (int)aiEdit.AI;
-                    this.trackBar_Patrols.Value = aiEdit.TotalDef - aiEdit.WallDef;
-                    this.txtBox_Patrols.Text = Convert.ToString(aiEdit.TotalDef - aiEdit.WallDef);
-                    this.trackBar_WallDef.Value = aiEdit.WallDef;
-                    this.txtBox_WalLDef.Text = Convert.ToString(aiEdit.WallDef);
-                    this.DefUnit1.SelectedItem = aiEdit.Defenders[0].UnitType.ToString();
-                    this.DefUnit2.SelectedItem = aiEdit.Defenders[1].UnitType.ToString();
-                    this.DefUnit3.SelectedItem = aiEdit.Defenders[2].UnitType.ToString();
-                    this.DefUnit4.SelectedItem = aiEdit.Defenders[3].UnitType.ToString();
-                    this.DefUnit5.SelectedItem = aiEdit.Defenders[4].UnitType.ToString();
-                    this.DefUnit6.SelectedItem = aiEdit.Defenders[5].UnitType.ToString();
-                    this.DefUnit7.SelectedItem = aiEdit.Defenders[6].UnitType.ToString();
-                    this.DefUnit8.SelectedItem = aiEdit.Defenders[7].UnitType.ToString();
+                    this.trackBar_Patrols.Value = aiEdit.RecruitingBehaviour.TotalDef - aiEdit.RecruitingBehaviour.WallDef;
+                    this.txtBox_Patrols.Text = Convert.ToString(aiEdit.RecruitingBehaviour.TotalDef - aiEdit.RecruitingBehaviour.WallDef);
+                    this.trackBar_WallDef.Value = aiEdit.RecruitingBehaviour.WallDef;
+                    this.txtBox_WalLDef.Text = Convert.ToString(aiEdit.RecruitingBehaviour.WallDef);
+                    this.DefUnit1.SelectedItem = aiEdit.RecruitingBehaviour.Defenders[0].UnitType.ToString();
+                    this.DefUnit2.SelectedItem = aiEdit.RecruitingBehaviour.Defenders[1].UnitType.ToString();
+                    this.DefUnit3.SelectedItem = aiEdit.RecruitingBehaviour.Defenders[2].UnitType.ToString();
+                    this.DefUnit4.SelectedItem = aiEdit.RecruitingBehaviour.Defenders[3].UnitType.ToString();
+                    this.DefUnit5.SelectedItem = aiEdit.RecruitingBehaviour.Defenders[4].UnitType.ToString();
+                    this.DefUnit6.SelectedItem = aiEdit.RecruitingBehaviour.Defenders[5].UnitType.ToString();
+                    this.DefUnit7.SelectedItem = aiEdit.RecruitingBehaviour.Defenders[6].UnitType.ToString();
+                    this.DefUnit8.SelectedItem = aiEdit.RecruitingBehaviour.Defenders[7].UnitType.ToString();
                 }
                 else
                 {
                     MessageBox.Show("Could not load the specified script!");
                 }
                 
+            }
+        }
+
+        private void trackB_FirstAttackForceSize_Scroll(object sender, EventArgs e)
+        {
+            this.txtBox_FirstAttackForceSize.Text = Convert.ToString(this.trackBar_FirstAttackForceSize.Value);
+        }
+
+        private void txtBox_FirstAttackForceSize_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.trackBar_FirstAttackForceSize.Value = Convert.ToInt32(this.txtBox_WalLDef.Text);
+            }
+            catch
+            {
+                //User is being stupid again...
+            }
+        }
+
+        private void trackB_AttackForceIncrease_Scroll(object sender, EventArgs e) => this.txtBox_AttackForceIncrease.Text = Convert.ToString(this.trackBar_AttackForceIncrease.Value);
+
+        private void txtBox_AttackForceIncrease_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.trackBar_AttackForceIncrease.Value = Convert.ToInt32(this.txtBox_WalLDef.Text);
+            }
+            catch
+            {
+                //User is being stupid again...
+            }
+        }
+
+        private void txtBox_FirstAttackForceSize_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsControl(e.KeyChar) && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBox_AttackForceIncrease_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsControl(e.KeyChar) && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }
