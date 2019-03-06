@@ -122,56 +122,56 @@ namespace AI_WallDef_Editor
 
             var unitType = Enums.UnitType.NONE;
             Enum.TryParse(this.DefUnit1.GetItemText(this.DefUnit1.SelectedItem), out unitType);
-            edit.Defenders.Add(new Defender()
+            edit.Defenders.Add(new DefendingUnit()
             {
                 DefUnit = Enums.DefUnit.DefUnit1,
                 UnitType = unitType
             });
 
             Enum.TryParse(this.DefUnit2.GetItemText(this.DefUnit2.SelectedItem), out unitType);
-            edit.Defenders.Add(new Defender()
+            edit.Defenders.Add(new DefendingUnit()
             {
                 DefUnit = Enums.DefUnit.DefUnit2,
                 UnitType = unitType
             });
 
             Enum.TryParse(this.DefUnit3.GetItemText(this.DefUnit3.SelectedItem), out unitType);
-            edit.Defenders.Add(new Defender()
+            edit.Defenders.Add(new DefendingUnit()
             {
                 DefUnit = Enums.DefUnit.DefUnit3,
                 UnitType = unitType
             });
 
             Enum.TryParse(this.DefUnit4.GetItemText(this.DefUnit4.SelectedItem), out unitType);
-            edit.Defenders.Add(new Defender()
+            edit.Defenders.Add(new DefendingUnit()
             {
                 DefUnit = Enums.DefUnit.DefUnit4,
                 UnitType = unitType
             });
 
             Enum.TryParse(this.DefUnit5.GetItemText(this.DefUnit5.SelectedItem), out unitType);
-            edit.Defenders.Add(new Defender()
+            edit.Defenders.Add(new DefendingUnit()
             {
                 DefUnit = Enums.DefUnit.DefUnit5,
                 UnitType = unitType
             });
 
             Enum.TryParse(this.DefUnit6.GetItemText(this.DefUnit6.SelectedItem), out unitType);
-            edit.Defenders.Add(new Defender()
+            edit.Defenders.Add(new DefendingUnit()
             {
                 DefUnit = Enums.DefUnit.DefUnit6,
                 UnitType = unitType
             });
 
             Enum.TryParse(this.DefUnit7.GetItemText(this.DefUnit7.SelectedItem), out unitType);
-            edit.Defenders.Add(new Defender()
+            edit.Defenders.Add(new DefendingUnit()
             {
                 DefUnit = Enums.DefUnit.DefUnit7,
                 UnitType = unitType
             });
 
             Enum.TryParse(this.DefUnit8.GetItemText(this.DefUnit8.SelectedItem), out unitType);
-            edit.Defenders.Add(new Defender()
+            edit.Defenders.Add(new DefendingUnit()
             {
                 DefUnit = Enums.DefUnit.DefUnit8,
                 UnitType = unitType
