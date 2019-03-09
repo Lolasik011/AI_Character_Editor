@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.AI_Lords = new System.Windows.Forms.ComboBox();
+            this.AI_Lords = new AI_Character_Editor.CustomComboBox();
             this.lbl_AI_Lord = new System.Windows.Forms.Label();
             this.lbl_Patrols = new System.Windows.Forms.Label();
             this.lbl_WallDefence = new System.Windows.Forms.Label();
@@ -93,11 +93,13 @@
             // 
             // AI_Lords
             // 
+            this.AI_Lords.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AI_Lords.FormattingEnabled = true;
             this.AI_Lords.Location = new System.Drawing.Point(622, 19);
             this.AI_Lords.Name = "AI_Lords";
             this.AI_Lords.Size = new System.Drawing.Size(121, 21);
             this.AI_Lords.TabIndex = 0;
+            this.AI_Lords.BeforeUpdate += new System.ComponentModel.CancelEventHandler(this.AI_Lords_BeforeUpdate);
             this.AI_Lords.SelectedIndexChanged += new System.EventHandler(this.AI_Lords_SelectedIndexChanged);
             // 
             // lbl_AI_Lord
@@ -651,7 +653,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox AI_Lords;
+        private CustomComboBox AI_Lords;
         private System.Windows.Forms.Label lbl_AI_Lord;
         private System.Windows.Forms.Label lbl_Patrols;
         private System.Windows.Forms.Label lbl_WallDefence;

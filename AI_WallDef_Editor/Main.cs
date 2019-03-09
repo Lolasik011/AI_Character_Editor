@@ -18,8 +18,6 @@ namespace AI_Character_Editor
         // empty collection of characters
         AICCollection aicc = new AICCollection();
 
-        AICharacter currentAI = new AICharacter();
-
         // read .aic file from Resources/vanilla.aic into collection
         Assembly asm = Assembly.GetExecutingAssembly();
 
@@ -187,6 +185,16 @@ namespace AI_Character_Editor
             //get lord from collection
             AICIndex lord = AICIndex.None;
             Enum.TryParse<AICIndex>(this.AI_Lords.GetItemText(this.AI_Lords.SelectedItem), out lord);
+
+            this.SaveChangesIntern(lord);
+
+            // save to file
+            using (var fs = new FileStream("output.aic", FileMode.Create))
+                this.aicc.Write(fs);
+        }
+
+        private void SaveChangesIntern(AICIndex lord)
+        {
             UnitType unitType = UnitType.None;
 
             AICharacter aiLord = this.aicc[lord];
@@ -215,12 +223,7 @@ namespace AI_Character_Editor
             aiLord.Personality.DefUnit8 = unitType;
 
             //aiLord.Personality.DefRecruitAffinity = 
-
-            // save to file
-            using (var fs = new FileStream("output.aic", FileMode.Create))
-                this.aicc.Write(fs);
         }
-
 
         private void open_Existing_Click(object sender, EventArgs e)
         {
@@ -310,6 +313,22 @@ namespace AI_Character_Editor
                 return;
             else
                 this.UpdateControls();
+        }
+
+        private void AI_Lords_BeforeUpdate(object sender, CancelEventArgs e)
+        {
+            if (this.aicc.Count() == 0)
+                return;
+            else
+            {
+                //Save changes
+                var x = this.AI_Lords.mPrevIndex;
+
+                AICIndex lord = AICIndex.None;
+                Enum.TryParse<AICIndex>(this.AI_Lords.Items[x].ToString(), out lord);
+
+                this.SaveChangesIntern(lord);
+            }
         }
     }
 

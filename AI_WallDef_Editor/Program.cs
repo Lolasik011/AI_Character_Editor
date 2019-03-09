@@ -18,6 +18,9 @@ namespace AI_Character_Editor
         [STAThread]
         static void Main()
         {
+
+            //EXAMPLE
+            /*
             // empty collection of characters
             var aicc = new AICCollection();
 
@@ -36,7 +39,7 @@ namespace AI_Character_Editor
 
             // save to file
             using (var fs = new FileStream("output.aic", FileMode.Create))
-                aicc.Write(fs);
+                aicc.Write(fs); */ 
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

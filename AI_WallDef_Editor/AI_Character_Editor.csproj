@@ -74,6 +74,9 @@
     <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\UnitType.cs">
       <Link>AICharacters\UnitType.cs</Link>
     </Compile>
+    <Compile Include="CustomComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
