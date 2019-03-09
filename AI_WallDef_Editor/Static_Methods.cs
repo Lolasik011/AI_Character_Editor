@@ -7,7 +7,7 @@ using System.IO;
 using System.Globalization;
 using Newtonsoft.Json;
 
-namespace AI_WallDef_Editor
+namespace AI_Profile_Editor
 {
     public static class Static_Methods
     {
@@ -159,13 +159,13 @@ namespace AI_WallDef_Editor
             }
         } */
 
-        public static bool SaveScript(AIEdit edit)
+        public static bool SaveAIProfile(AIEdit edit)
         {
             if (edit != null)
             {
                 try
                 {
-                    File.WriteAllText(edit.AI.ToString() + ".ais", JsonConvert.SerializeObject(edit));
+                    File.WriteAllText(edit.AI.ToString() + ".aip", JsonConvert.SerializeObject(edit));
                 }
                 catch
                 {
@@ -179,12 +179,6 @@ namespace AI_WallDef_Editor
                 return false;
         }
 
-        public static AIEdit LoadScript(string scriptPath)
-        {
-            if (!File.Exists(scriptPath))
-                return null;
-
-            return JsonConvert.DeserializeObject<AIEdit>(File.ReadAllText(scriptPath));
-        }
+        public static AIEdit LoadAIProfile(string aiProfilePath) => !File.Exists(aiProfilePath) ? null : JsonConvert.DeserializeObject<AIEdit>(File.ReadAllText(aiProfilePath));
     }
 }

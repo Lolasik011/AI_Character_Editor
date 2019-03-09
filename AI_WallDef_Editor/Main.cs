@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AI_WallDef_Editor
+namespace AI_Profile_Editor
 {
     public partial class Form1 : Form
     {
@@ -139,7 +139,7 @@ namespace AI_WallDef_Editor
             }
         }
 
-        private void CreateScript_Click(object sender, EventArgs e)
+        private void CreateAIProfile_Click(object sender, EventArgs e)
         {
             var edit = new AIEdit();
             Enum.TryParse(this.AI_Lords.GetItemText(this.AI_Lords.SelectedItem), out edit.AI);
@@ -157,13 +157,13 @@ namespace AI_WallDef_Editor
             edit.RecruitingBehaviour.AttackForceIncreaseMultiplier = Convert.ToDouble(this.txtBox_AttackForceIncreaseMultiplier.Text); 
             this.LoadOffUnits(edit); */
 
-            if (Static_Methods.SaveScript(edit))
+            if (Static_Methods.SaveAIProfile(edit))
             {
-                MessageBox.Show("Script created successfully!");
+                MessageBox.Show("AI profile created successfully!");
                 //open?
             }
             else
-                MessageBox.Show("Script could not be created!");
+                MessageBox.Show("AI profile could not be created!");
         }
 
         private void LoadDefUnits(AIEdit edit)
@@ -289,21 +289,21 @@ namespace AI_WallDef_Editor
         private void open_Existing_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.DefaultExt = ".ais";
+            fileDialog.DefaultExt = ".aip";
             fileDialog.CheckFileExists = true;
             fileDialog.CheckPathExists = true;
-            fileDialog.Title = "Select an existing ai script";
+            fileDialog.Title = "Select an existing AI profile";
             fileDialog.Multiselect = false;
-            fileDialog.Filter = "ai script files (*.ais)|*.ais";
+            fileDialog.Filter = "AI profile files (*.aip)|*.aip";
             fileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             if(fileDialog.ShowDialog() == DialogResult.OK)
             {
-                AIEdit aiEdit = Static_Methods.LoadScript(fileDialog.FileName);
+                AIEdit aiEdit = Static_Methods.LoadAIProfile(fileDialog.FileName);
 
                 if (aiEdit != null)
                 {
-                    MessageBox.Show("Script loaded successfully!");
+                    MessageBox.Show("AI profile loaded successfully!");
 
                     this.AI_Lords.SelectedIndex = (int)aiEdit.AI;
                     this.trackBar_Patrols.Value = aiEdit.RecruitingBehaviour.TotalDef - aiEdit.RecruitingBehaviour.WallDef;
@@ -321,7 +321,7 @@ namespace AI_WallDef_Editor
                 }
                 else
                 {
-                    MessageBox.Show("Could not load the specified script!");
+                    MessageBox.Show("Could not load the specified AI profile!");
                 }
                 
             }

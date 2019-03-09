@@ -1,4 +1,4 @@
-﻿namespace AI_WallDef_Editor
+﻿namespace AI_Profile_Editor
 {
     partial class Form1
     {
@@ -37,7 +37,7 @@
             this.trackBar_WallDef = new System.Windows.Forms.TrackBar();
             this.txtBox_Patrols = new System.Windows.Forms.TextBox();
             this.txtBox_WalLDef = new System.Windows.Forms.TextBox();
-            this.CreateScript = new System.Windows.Forms.Button();
+            this.CreateAIProfile = new System.Windows.Forms.Button();
             this.DefUnit1 = new System.Windows.Forms.ComboBox();
             this.lbl_DefUnit1 = new System.Windows.Forms.Label();
             this.lbl_DefUnit2 = new System.Windows.Forms.Label();
@@ -170,15 +170,15 @@
             this.txtBox_WalLDef.TextChanged += new System.EventHandler(this.txtBox_WalLDef_TextChanged);
             this.txtBox_WalLDef.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_WalLDef_KeyPress);
             // 
-            // CreateScript
+            // CreateAIProfile
             // 
-            this.CreateScript.Location = new System.Drawing.Point(90, 12);
-            this.CreateScript.Name = "CreateScript";
-            this.CreateScript.Size = new System.Drawing.Size(75, 23);
-            this.CreateScript.TabIndex = 8;
-            this.CreateScript.Text = "Create";
-            this.CreateScript.UseVisualStyleBackColor = true;
-            this.CreateScript.Click += new System.EventHandler(this.CreateScript_Click);
+            this.CreateAIProfile.Location = new System.Drawing.Point(90, 12);
+            this.CreateAIProfile.Name = "CreateAIProfile";
+            this.CreateAIProfile.Size = new System.Drawing.Size(75, 23);
+            this.CreateAIProfile.TabIndex = 8;
+            this.CreateAIProfile.Text = "Create";
+            this.CreateAIProfile.UseVisualStyleBackColor = true;
+            this.CreateAIProfile.Click += new System.EventHandler(this.CreateAIProfile_Click);
             // 
             // DefUnit1
             // 
@@ -635,10 +635,10 @@
             this.Controls.Add(this.lbl_Defence);
             this.Controls.Add(this.pnl_Defence);
             this.Controls.Add(this.open_Existing);
-            this.Controls.Add(this.CreateScript);
+            this.Controls.Add(this.CreateAIProfile);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "AI_Script_Creator";
+            this.Text = "AI_Profile_Editor";
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Patrols)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_WallDef)).EndInit();
             this.pnl_Defence.ResumeLayout(false);
@@ -662,7 +662,7 @@
         private System.Windows.Forms.TrackBar trackBar_WallDef;
         private System.Windows.Forms.TextBox txtBox_Patrols;
         private System.Windows.Forms.TextBox txtBox_WalLDef;
-        private System.Windows.Forms.Button CreateScript;
+        private System.Windows.Forms.Button CreateAIProfile;
         private System.Windows.Forms.ComboBox DefUnit1;
         private System.Windows.Forms.Label lbl_DefUnit1;
         private System.Windows.Forms.Label lbl_DefUnit2;

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AI_Script_Creator")]
+[assembly: AssemblyTitle("AI_Profile_Editor")]
 [assembly: AssemblyDescription("A small tool to create ai files that can be used with the unoffical crusader patch")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kimberly Dev")]
-[assembly: AssemblyProduct("AI_Script_Creator")]
+[assembly: AssemblyProduct("AI_Profile_Editor")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.8.0.0")]
-[assembly: AssemblyFileVersion("0.8.0.0")]
+[assembly: AssemblyVersion("0.8.0.1")]
+[assembly: AssemblyFileVersion("0.8.0.1")]
