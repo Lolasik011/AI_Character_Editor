@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace AI_Profile_Editor
 {
+    [Serializable]
+    [XmlRoot(Namespace = "http://www.github.com/ByBurton/AI_Profile_Editor")]
     public class AIEdit
     {
         public Enums.AI_Lord AI;
@@ -17,23 +20,28 @@ namespace AI_Profile_Editor
         public RecruitingBehaviour RecruitingBehaviour;
     }
 
+    [Serializable]
     public class DefendingUnit
     {
         public Enums.UnitType UnitType;
         public Enums.DefUnit DefUnit;
     }
+
+    [Serializable]
     public class AttackingUnit
     {
         public Enums.UnitType UnitType;
         public Enums.OffUnit OffUnit;
     }
 
+    [Serializable]
     public class MarketBehaviour
     {
         public List<Goods> GoodsToKeep = new List<Goods>();
         public int GoldToKeep;
     }
 
+    [Serializable]
     public class RecruitingBehaviour
     {
         //public Enums.RecruitSpeed DefenceRecruitSpeed;
@@ -50,7 +58,7 @@ namespace AI_Profile_Editor
         public double AttackForceIncreaseMultiplier;
     }
 
-
+    [Serializable]
     public class Goods
     {
         public Enums.Goods Good;

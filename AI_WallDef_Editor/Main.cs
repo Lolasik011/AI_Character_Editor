@@ -157,7 +157,8 @@ namespace AI_Profile_Editor
             edit.RecruitingBehaviour.AttackForceIncreaseMultiplier = Convert.ToDouble(this.txtBox_AttackForceIncreaseMultiplier.Text); 
             this.LoadOffUnits(edit); */
 
-            if (Static_Methods.SaveAIProfile(edit))
+            //if (Static_Methods.SaveAIProfileXML(edit))
+            if (Static_Methods.SaveAIProfileJSON(edit))
             {
                 MessageBox.Show("AI profile created successfully!");
                 //open?
@@ -299,7 +300,8 @@ namespace AI_Profile_Editor
 
             if(fileDialog.ShowDialog() == DialogResult.OK)
             {
-                AIEdit aiEdit = Static_Methods.LoadAIProfile(fileDialog.FileName);
+                //AIEdit aiEdit = Static_Methods.LoadAIProfileXML(fileDialog.FileName);
+                AIEdit aiEdit = Static_Methods.LoadAIProfileJSON(fileDialog.FileName);
 
                 if (aiEdit != null)
                 {

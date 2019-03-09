@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.Globalization;
-using Newtonsoft.Json;
+using System.IO;
+using System.Linq;
+using System.Xml.Serialization;
 
 namespace AI_Profile_Editor
 {
@@ -159,7 +158,53 @@ namespace AI_Profile_Editor
             }
         } */
 
-        public static bool SaveAIProfile(AIEdit edit)
+        public static bool SaveAIProfileXML(AIEdit edit)
+        {
+            if (edit != null)
+            {
+                try
+                {
+                    //type reflection error.
+                    var serializer = new XmlSerializer(typeof(AIEdit));
+                    var fs = new FileStream(edit.AI.ToString() + ".aip", FileMode.Create, FileAccess.Write);
+                    var sw = new StreamWriter(fs);
+
+                    serializer.Serialize(sw, edit);
+
+                    sw.Close();
+                    fs.Close();
+                }
+                catch(Exception exc)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public static AIEdit LoadAIProfileXML(string aiProfilePath)
+        {
+            if (!File.Exists(aiProfilePath))
+                return null;
+            else
+            {
+                //type reflection error.
+                var serializer = new XmlSerializer(typeof(AIEdit));
+                var fs = new FileStream(aiProfilePath, FileMode.Open, FileAccess.Read);
+                var sr = new StreamReader(fs);
+                var edit = serializer.Deserialize(fs);
+
+                sr.Close();
+                fs.Close();
+
+                return (AIEdit)edit;
+            }
+        }
+
+        public static bool SaveAIProfileJSON(AIEdit edit)
         {
             if (edit != null)
             {
@@ -179,6 +224,6 @@ namespace AI_Profile_Editor
                 return false;
         }
 
-        public static AIEdit LoadAIProfile(string aiProfilePath) => !File.Exists(aiProfilePath) ? null : JsonConvert.DeserializeObject<AIEdit>(File.ReadAllText(aiProfilePath));
+        public static AIEdit LoadAIProfileJSON(string aiProfilePath) => !File.Exists(aiProfilePath) ? null : JsonConvert.DeserializeObject<AIEdit>(File.ReadAllText(aiProfilePath));
     }
 }
