@@ -10,7 +10,7 @@ namespace AI_Character_Editor
 {
     public static class Static_Methods
     {
-        public static List<string> GetUnitTypes() => Enum.GetNames(typeof(Enums.UnitType)).ToList();
+        public static List<string> GetUnitTypes() => Enum.GetNames(typeof(UCP.AICharacters.UnitType)).ToList();
         public static string ToHex(int value) => String.Format("0x{0:X}", value);
         public static int FromHex(string value)
         {
@@ -157,73 +157,5 @@ namespace AI_Character_Editor
                 return edit;
             }
         } */
-
-        public static bool SaveAICharacterXML(AIEdit edit)
-        {
-            if (edit != null)
-            {
-                try
-                {
-                    //type reflection error.
-                    var serializer = new XmlSerializer(typeof(AIEdit));
-                    var fs = new FileStream(edit.AI.ToString() + ".aic", FileMode.Create, FileAccess.Write);
-                    var sw = new StreamWriter(fs);
-
-                    serializer.Serialize(sw, edit);
-
-                    sw.Close();
-                    fs.Close();
-                }
-                catch(Exception exc)
-                {
-                    return false;
-                }
-
-                return true;
-            }
-            else
-                return false;
-        }
-
-        public static AIEdit LoadAICharacterXML(string aiCharacterPath)
-        {
-            if (!File.Exists(aiCharacterPath))
-                return null;
-            else
-            {
-                //type reflection error.
-                var serializer = new XmlSerializer(typeof(AIEdit));
-                var fs = new FileStream(aiCharacterPath, FileMode.Open, FileAccess.Read);
-                var sr = new StreamReader(fs);
-                var edit = serializer.Deserialize(fs);
-
-                sr.Close();
-                fs.Close();
-
-                return (AIEdit)edit;
-            }
-        }
-
-        public static bool SaveAICharacterJSON(AIEdit edit)
-        {
-            if (edit != null)
-            {
-                try
-                {
-                    File.WriteAllText(edit.AI.ToString() + ".aic", JsonConvert.SerializeObject(edit));
-                }
-                catch
-                {
-                    return false;
-                }
-
-
-                return true;
-            }
-            else
-                return false;
-        }
-
-        public static AIEdit LoadAICharacterJSON(string aiCharacterPath) => !File.Exists(aiCharacterPath) ? null : JsonConvert.DeserializeObject<AIEdit>(File.ReadAllText(aiCharacterPath));
     }
 }
