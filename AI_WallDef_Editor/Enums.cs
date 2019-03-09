@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AI_Profile_Editor
+namespace AI_Character_Editor
 {
     public class Enums
     {

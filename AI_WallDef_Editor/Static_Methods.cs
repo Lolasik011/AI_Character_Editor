@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 
-namespace AI_Profile_Editor
+namespace AI_Character_Editor
 {
     public static class Static_Methods
     {
@@ -158,7 +158,7 @@ namespace AI_Profile_Editor
             }
         } */
 
-        public static bool SaveAIProfileXML(AIEdit edit)
+        public static bool SaveAICharacterXML(AIEdit edit)
         {
             if (edit != null)
             {
@@ -166,7 +166,7 @@ namespace AI_Profile_Editor
                 {
                     //type reflection error.
                     var serializer = new XmlSerializer(typeof(AIEdit));
-                    var fs = new FileStream(edit.AI.ToString() + ".aip", FileMode.Create, FileAccess.Write);
+                    var fs = new FileStream(edit.AI.ToString() + ".aic", FileMode.Create, FileAccess.Write);
                     var sw = new StreamWriter(fs);
 
                     serializer.Serialize(sw, edit);
@@ -185,15 +185,15 @@ namespace AI_Profile_Editor
                 return false;
         }
 
-        public static AIEdit LoadAIProfileXML(string aiProfilePath)
+        public static AIEdit LoadAICharacterXML(string aiCharacterPath)
         {
-            if (!File.Exists(aiProfilePath))
+            if (!File.Exists(aiCharacterPath))
                 return null;
             else
             {
                 //type reflection error.
                 var serializer = new XmlSerializer(typeof(AIEdit));
-                var fs = new FileStream(aiProfilePath, FileMode.Open, FileAccess.Read);
+                var fs = new FileStream(aiCharacterPath, FileMode.Open, FileAccess.Read);
                 var sr = new StreamReader(fs);
                 var edit = serializer.Deserialize(fs);
 
@@ -204,13 +204,13 @@ namespace AI_Profile_Editor
             }
         }
 
-        public static bool SaveAIProfileJSON(AIEdit edit)
+        public static bool SaveAICharacterJSON(AIEdit edit)
         {
             if (edit != null)
             {
                 try
                 {
-                    File.WriteAllText(edit.AI.ToString() + ".aip", JsonConvert.SerializeObject(edit));
+                    File.WriteAllText(edit.AI.ToString() + ".aic", JsonConvert.SerializeObject(edit));
                 }
                 catch
                 {
@@ -224,6 +224,6 @@ namespace AI_Profile_Editor
                 return false;
         }
 
-        public static AIEdit LoadAIProfileJSON(string aiProfilePath) => !File.Exists(aiProfilePath) ? null : JsonConvert.DeserializeObject<AIEdit>(File.ReadAllText(aiProfilePath));
+        public static AIEdit LoadAICharacterJSON(string aiCharacterPath) => !File.Exists(aiCharacterPath) ? null : JsonConvert.DeserializeObject<AIEdit>(File.ReadAllText(aiCharacterPath));
     }
 }

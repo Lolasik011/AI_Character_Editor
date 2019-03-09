@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D6A58338-FC38-4FA7-817C-2AC70DDF396A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AI_Profile_Editor</RootNamespace>
-    <AssemblyName>AI_Profile_Editor</AssemblyName>
+    <RootNamespace>AI_Character_Editor</RootNamespace>
+    <AssemblyName>AI_Character_Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -77,25 +77,25 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="example_scripts\Abbot.aip">
+    <None Include="example_scripts\Abbot.aic">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="example_scripts\Frederick.aip">
+    <None Include="example_scripts\Frederick.aic">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="example_scripts\Marshall.aip">
+    <None Include="example_scripts\Marshall.aic">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="example_scripts\Philipp.aip">
+    <None Include="example_scripts\Philipp.aic">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="example_scripts\Rat.aip">
+    <None Include="example_scripts\Rat.aic">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="example_scripts\Richard.aip">
+    <None Include="example_scripts\Richard.aic">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="example_scripts\Wolf.aip">
+    <None Include="example_scripts\Wolf.aic">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

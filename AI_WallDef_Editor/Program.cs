@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AI_Profile_Editor
+namespace AI_Character_Editor
 {
     static class Program
     {

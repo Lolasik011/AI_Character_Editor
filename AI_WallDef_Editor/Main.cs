@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AI_Profile_Editor
+namespace AI_Character_Editor
 {
     public partial class Form1 : Form
     {
@@ -139,7 +139,7 @@ namespace AI_Profile_Editor
             }
         }
 
-        private void CreateAIProfile_Click(object sender, EventArgs e)
+        private void CreateAICharacter_Click(object sender, EventArgs e)
         {
             var edit = new AIEdit();
             Enum.TryParse(this.AI_Lords.GetItemText(this.AI_Lords.SelectedItem), out edit.AI);
@@ -157,14 +157,14 @@ namespace AI_Profile_Editor
             edit.RecruitingBehaviour.AttackForceIncreaseMultiplier = Convert.ToDouble(this.txtBox_AttackForceIncreaseMultiplier.Text); 
             this.LoadOffUnits(edit); */
 
-            //if (Static_Methods.SaveAIProfileXML(edit))
-            if (Static_Methods.SaveAIProfileJSON(edit))
+            //if (Static_Methods.SaveAICharacterXML(edit))
+            if (Static_Methods.SaveAICharacterJSON(edit))
             {
-                MessageBox.Show("AI profile created successfully!");
+                MessageBox.Show("AI character created successfully!");
                 //open?
             }
             else
-                MessageBox.Show("AI profile could not be created!");
+                MessageBox.Show("AI character could not be created!");
         }
 
         private void LoadDefUnits(AIEdit edit)
@@ -290,22 +290,22 @@ namespace AI_Profile_Editor
         private void open_Existing_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.DefaultExt = ".aip";
+            fileDialog.DefaultExt = ".aic";
             fileDialog.CheckFileExists = true;
             fileDialog.CheckPathExists = true;
             fileDialog.Title = "Select an existing AI profile";
             fileDialog.Multiselect = false;
-            fileDialog.Filter = "AI profile files (*.aip)|*.aip";
+            fileDialog.Filter = "AI character files (*.aic)|*.aic";
             fileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             if(fileDialog.ShowDialog() == DialogResult.OK)
             {
                 //AIEdit aiEdit = Static_Methods.LoadAIProfileXML(fileDialog.FileName);
-                AIEdit aiEdit = Static_Methods.LoadAIProfileJSON(fileDialog.FileName);
+                AIEdit aiEdit = Static_Methods.LoadAICharacterJSON(fileDialog.FileName);
 
                 if (aiEdit != null)
                 {
-                    MessageBox.Show("AI profile loaded successfully!");
+                    MessageBox.Show("AI character loaded successfully!");
 
                     this.AI_Lords.SelectedIndex = (int)aiEdit.AI;
                     this.trackBar_Patrols.Value = aiEdit.RecruitingBehaviour.TotalDef - aiEdit.RecruitingBehaviour.WallDef;
@@ -323,7 +323,7 @@ namespace AI_Profile_Editor
                 }
                 else
                 {
-                    MessageBox.Show("Could not load the specified AI profile!");
+                    MessageBox.Show("Could not load the specified AI character!");
                 }
                 
             }

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace AI_Profile_Editor
+namespace AI_Character_Editor
 {
     [Serializable]
-    [XmlRoot(Namespace = "http://www.github.com/ByBurton/AI_Profile_Editor")]
+    [XmlRoot(Namespace = "http://www.github.com/ByBurton/AI_Character_Editor")]
     public class AIEdit
     {
         public Enums.AI_Lord AI;

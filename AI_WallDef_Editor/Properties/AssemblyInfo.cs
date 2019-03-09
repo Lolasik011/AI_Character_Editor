@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AI_Profile_Editor")]
+[assembly: AssemblyTitle("AI_Character_Editor")]
 [assembly: AssemblyDescription("A small tool to create ai files that can be used with the unoffical crusader patch")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kimberly Dev")]
-[assembly: AssemblyProduct("AI_Profile_Editor")]
+[assembly: AssemblyProduct("AI_Character_Editor")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
