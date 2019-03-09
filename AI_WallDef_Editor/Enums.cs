@@ -49,7 +49,7 @@ namespace AI_Character_Editor
             Assassins = 0x49,
             HorseArchers = 0x4A,
             ArabianSwordsmen = 0x4B,
-            FireThrower = 0x4C,
+            FireThrowers = 0x4C,
         }
 
         public enum DefUnit
