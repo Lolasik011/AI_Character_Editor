@@ -37,11 +37,19 @@ namespace AI_Character_Editor
             Crossbowmen = 0x17,
             Spearmen = 0x18,
             Pikemen = 0x19,
+            Macemen = 0x1A,
             Swordsmen = 0x1B,
             Knights = 0x1C,
+            Laddermen = 0x1D,
             Engineers = 0x1E,
             Monks = 0x25,
             ArabianArchers = 0x46,
+            Slaves = 0x47,
+            Slingers = 0x48,
+            Assassins = 0x49,
+            HorseArchers = 0x4A,
+            ArabianSwordsmen = 0x4B,
+            FireThrower = 0x4C,
         }
 
         public enum DefUnit
