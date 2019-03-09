@@ -35,12 +35,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>secure.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\secure.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -65,17 +62,14 @@
     <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AIPersonality.cs">
       <Link>AICharacters\AIPersonality.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AIPField.cs">
-      <Link>AICharacters\AIPField.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AIReader.cs">
+      <Link>AICharacters\AIReader.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AIPFieldType.cs">
-      <Link>AICharacters\AIPFieldType.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AIWriter.cs">
+      <Link>AICharacters\AIWriter.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\LineReader.cs">
-      <Link>AICharacters\LineReader.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\LineWriter.cs">
-      <Link>AICharacters\LineWriter.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\RWAttributes.cs">
+      <Link>AICharacters\RWAttributes.cs</Link>
     </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\UnitType.cs">
       <Link>AICharacters\UnitType.cs</Link>
@@ -102,27 +96,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="example_scripts\Abbot.aic">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="example_scripts\Frederick.aic">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="example_scripts\Marshall.aic">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="example_scripts\Philipp.aic">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="example_scripts\Rat.aic">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="example_scripts\Richard.aic">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="example_scripts\Wolf.aic">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -133,12 +106,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Resources\vanilla.aic" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="secure.ico" />
+    <Content Include="Resources\secure.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>IDAParser</RootNamespace>
     <AssemblyName>IDAParser</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,7 +39,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -54,17 +54,14 @@
     <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AIPersonality.cs">
       <Link>AICharacters\AIPersonality.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AIPField.cs">
-      <Link>AICharacters\AIPField.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AIReader.cs">
+      <Link>AICharacters\AIReader.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AIPFieldType.cs">
-      <Link>AICharacters\AIPFieldType.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AIWriter.cs">
+      <Link>AICharacters\AIWriter.cs</Link>
     </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\LineReader.cs">
-      <Link>AICharacters\LineReader.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\LineWriter.cs">
-      <Link>AICharacters\LineWriter.cs</Link>
+    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\RWAttributes.cs">
+      <Link>AICharacters\RWAttributes.cs</Link>
     </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\UnitType.cs">
       <Link>AICharacters\UnitType.cs</Link>

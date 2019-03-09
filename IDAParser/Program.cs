@@ -132,7 +132,7 @@ namespace IDAParser
                 return;
             }
 
-            result[field] = value;
+            result.SetByIndex(field, value);
         }
 
 
@@ -162,7 +162,7 @@ namespace IDAParser
                 return;
             }
 
-            result[0] = value;
+            result.SetByIndex(0, value);
         }
     }
 }
