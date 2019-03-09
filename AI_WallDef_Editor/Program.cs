@@ -19,10 +19,10 @@ namespace AI_Character_Editor
         static void Main()
         {
             // empty collection of characters
-            AICCollection aicc = new AICCollection();
+            var aicc = new AICCollection();
 
             // read .aic file from Resources/vanilla.aic into collection
-            Assembly asm = Assembly.GetExecutingAssembly();
+            var asm = Assembly.GetExecutingAssembly();
             using (Stream stream = asm.GetManifestResourceStream("AI_Character_Editor.Resources.vanilla.aic"))
                 aicc.Read(stream);
 
@@ -35,12 +35,12 @@ namespace AI_Character_Editor
             rat.Personality.DefWalls = 200;
 
             // save to file
-            using (FileStream fs = new FileStream("output.aic", FileMode.Create))
+            using (var fs = new FileStream("output.aic", FileMode.Create))
                 aicc.Write(fs);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
     }
 }

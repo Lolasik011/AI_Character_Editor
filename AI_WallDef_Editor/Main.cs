@@ -3,18 +3,29 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UCP.AICharacters;
 
 namespace AI_Character_Editor
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        // empty collection of characters
+        AICCollection aicc = new AICCollection();
+
+        AICharacter currentAI = new AICharacter();
+
+        // read .aic file from Resources/vanilla.aic into collection
+        Assembly asm = Assembly.GetExecutingAssembly();
+
+        public MainForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.Fill_AI_Lords();
             this.Fill_OffUnits();
@@ -23,33 +34,65 @@ namespace AI_Character_Editor
             this.trackBar_WallDef.Value = 20;
             this.trackBar_FirstAttackForceSize.Value = 10;
             this.trackBar_AttackForceIncreaseStatic.Value = 7;
-            this.txtBox_AttackForceIncreaseMultiplier.Text =" 0.5";
+            this.txtBox_AttackForceIncreaseMultiplier.Text = " 0.5";
             this.txtBox_Patrols.Text = "10";
             this.txtBox_WalLDef.Text = "20";
             this.txtBox_FirstAttackForceSize.Text = "10";
             this.txtBox_AttackForceIncreaseStatic.Text = "7";
+
+            //read in original ai file
+            using (Stream stream = asm.GetManifestResourceStream("AI_Character_Editor.Resources.vanilla.aic"))
+                this.aicc.Read(stream);
+
+            this.UpdateControls();
+        }
+
+        private void UpdateControls()
+        {
+            AICIndex lord = AICIndex.None;
+
+            Enum.TryParse<AICIndex>(this.AI_Lords.GetItemText(this.AI_Lords.SelectedItem), out lord);
+
+            AICharacter aiLord = this.aicc[lord];
+            aiLord.Index = lord;
+
+            this.trackBar_WallDef.Value = aiLord.Personality.DefWalls;
+            this.trackBar_Patrols.Value = aiLord.Personality.DefTotal - aiLord.Personality.DefWalls;
+            this.txtBox_WalLDef.Text = Convert.ToString(this.trackBar_WallDef.Value);
+            this.txtBox_Patrols.Text = Convert.ToString(this.trackBar_Patrols.Value);
+
+            this.DefUnit1.SelectedItem = aiLord.Personality.DefUnit1.ToString();
+            this.DefUnit2.SelectedItem = aiLord.Personality.DefUnit2.ToString();
+            this.DefUnit3.SelectedItem = aiLord.Personality.DefUnit3.ToString();
+            this.DefUnit4.SelectedItem = aiLord.Personality.DefUnit4.ToString();
+            this.DefUnit5.SelectedItem = aiLord.Personality.DefUnit5.ToString();
+            this.DefUnit6.SelectedItem = aiLord.Personality.DefUnit6.ToString();
+            this.DefUnit7.SelectedItem = aiLord.Personality.DefUnit7.ToString();
+            this.DefUnit8.SelectedItem = aiLord.Personality.DefUnit8.ToString();
+
+            //DefAffinity
         }
 
         private void Fill_AI_Lords()
         {
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Rat.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Snake.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Pig.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Wolf.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Rat.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Snake.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Pig.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Wolf.ToString());
 
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Sultan.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Caliph.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Richard.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Saladin.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Sultan.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Caliph.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Richard.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Saladin.ToString());
 
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Wazir.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Emir.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Nizar.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Sheriff.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Frederick.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Philipp.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Marshal.ToString());
-            this.AI_Lords.Items.Add(UCP.AICharacters.AICIndex.Abbot.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Wazir.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Emir.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Nizar.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Sheriff.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Frederick.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Philipp.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Marshal.ToString());
+            this.AI_Lords.Items.Add(AICIndex.Abbot.ToString());
 
             this.AI_Lords.SelectedIndex = 0;
         }
@@ -141,6 +184,41 @@ namespace AI_Character_Editor
 
         private void CreateAICharacter_Click(object sender, EventArgs e)
         {
+            //get lord from collection
+            AICIndex lord = AICIndex.None;
+            Enum.TryParse<AICIndex>(this.AI_Lords.GetItemText(this.AI_Lords.SelectedItem), out lord);
+            UnitType unitType = UnitType.None;
+
+            AICharacter aiLord = this.aicc[lord];
+
+            aiLord.Index = lord;
+
+
+            aiLord.Personality.DefTotal = this.trackBar_Patrols.Value + this.trackBar_WallDef.Value;
+            aiLord.Personality.DefWalls = this.trackBar_WallDef.Value;
+
+            Enum.TryParse<UnitType>(this.DefUnit1.GetItemText(this.DefUnit1.SelectedItem), out unitType);
+            aiLord.Personality.DefUnit1 = unitType;
+            Enum.TryParse<UnitType>(this.DefUnit2.GetItemText(this.DefUnit2.SelectedItem), out unitType);
+            aiLord.Personality.DefUnit2 = unitType;
+            Enum.TryParse<UnitType>(this.DefUnit3.GetItemText(this.DefUnit3.SelectedItem), out unitType);
+            aiLord.Personality.DefUnit3 = unitType;
+            Enum.TryParse<UnitType>(this.DefUnit4.GetItemText(this.DefUnit4.SelectedItem), out unitType);
+            aiLord.Personality.DefUnit4 = unitType;
+            Enum.TryParse<UnitType>(this.DefUnit5.GetItemText(this.DefUnit5.SelectedItem), out unitType);
+            aiLord.Personality.DefUnit5 = unitType;
+            Enum.TryParse<UnitType>(this.DefUnit6.GetItemText(this.DefUnit6.SelectedItem), out unitType);
+            aiLord.Personality.DefUnit6 = unitType;
+            Enum.TryParse<UnitType>(this.DefUnit7.GetItemText(this.DefUnit7.SelectedItem), out unitType);
+            aiLord.Personality.DefUnit7 = unitType;
+            Enum.TryParse<UnitType>(this.DefUnit8.GetItemText(this.DefUnit8.SelectedItem), out unitType);
+            aiLord.Personality.DefUnit8 = unitType;
+
+            //aiLord.Personality.DefRecruitAffinity = 
+
+            // save to file
+            using (var fs = new FileStream("output.aic", FileMode.Create))
+                this.aicc.Write(fs);
         }
 
 
@@ -153,7 +231,7 @@ namespace AI_Character_Editor
             fileDialog.Title = "Select an existing AI profile";
             fileDialog.Multiselect = false;
             fileDialog.Filter = "AI character files (*.aic)|*.aic";
-            fileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            fileDialog.InitialDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             if(fileDialog.ShowDialog() == DialogResult.OK)
             {                
@@ -208,7 +286,7 @@ namespace AI_Character_Editor
         }
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            if (!Char.IsControl(e.KeyChar) && !Char.IsDigit(e.KeyChar) &&
         (e.KeyChar != '.'))
             {
                 e.Handled = true;
@@ -224,6 +302,14 @@ namespace AI_Character_Editor
 
         private void Form1_Load(object sender, EventArgs e)
         {
+        }
+
+        private void AI_Lords_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.aicc.Count() == 0)
+                return;
+            else
+                this.UpdateControls();
         }
     }
 

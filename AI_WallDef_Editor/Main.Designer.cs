@@ -1,6 +1,6 @@
 ﻿namespace AI_Character_Editor
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.AI_Lords = new System.Windows.Forms.ComboBox();
             this.lbl_AI_Lord = new System.Windows.Forms.Label();
             this.lbl_Patrols = new System.Windows.Forms.Label();
@@ -98,6 +98,7 @@
             this.AI_Lords.Name = "AI_Lords";
             this.AI_Lords.Size = new System.Drawing.Size(121, 21);
             this.AI_Lords.TabIndex = 0;
+            this.AI_Lords.SelectedIndexChanged += new System.EventHandler(this.AI_Lords_SelectedIndexChanged);
             // 
             // lbl_AI_Lord
             // 
@@ -130,7 +131,6 @@
             // 
             this.trackBar_Patrols.Location = new System.Drawing.Point(80, 16);
             this.trackBar_Patrols.Maximum = 300;
-            this.trackBar_Patrols.Minimum = 1;
             this.trackBar_Patrols.Name = "trackBar_Patrols";
             this.trackBar_Patrols.Size = new System.Drawing.Size(408, 45);
             this.trackBar_Patrols.TabIndex = 4;
@@ -142,7 +142,6 @@
             // 
             this.trackBar_WallDef.Location = new System.Drawing.Point(80, 90);
             this.trackBar_WallDef.Maximum = 300;
-            this.trackBar_WallDef.Minimum = 1;
             this.trackBar_WallDef.Name = "trackBar_WallDef";
             this.trackBar_WallDef.Size = new System.Drawing.Size(408, 45);
             this.trackBar_WallDef.TabIndex = 5;
@@ -463,7 +462,6 @@
             // 
             this.trackBar_FirstAttackForceSize.Location = new System.Drawing.Point(145, 16);
             this.trackBar_FirstAttackForceSize.Maximum = 300;
-            this.trackBar_FirstAttackForceSize.Minimum = 1;
             this.trackBar_FirstAttackForceSize.Name = "trackBar_FirstAttackForceSize";
             this.trackBar_FirstAttackForceSize.Size = new System.Drawing.Size(408, 45);
             this.trackBar_FirstAttackForceSize.TabIndex = 27;
@@ -483,7 +481,6 @@
             // 
             this.trackBar_AttackForceIncreaseStatic.Location = new System.Drawing.Point(145, 89);
             this.trackBar_AttackForceIncreaseStatic.Maximum = 300;
-            this.trackBar_AttackForceIncreaseStatic.Minimum = 1;
             this.trackBar_AttackForceIncreaseStatic.Name = "trackBar_AttackForceIncreaseStatic";
             this.trackBar_AttackForceIncreaseStatic.Size = new System.Drawing.Size(408, 45);
             this.trackBar_AttackForceIncreaseStatic.TabIndex = 28;
@@ -623,7 +620,7 @@
             this.lbl_Offence.Text = "Offence";
             this.lbl_Offence.Visible = false;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -637,7 +634,7 @@
             this.Controls.Add(this.open_Existing);
             this.Controls.Add(this.CreateAICharacter);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "AI_Character_Editor";
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Patrols)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_WallDef)).EndInit();
