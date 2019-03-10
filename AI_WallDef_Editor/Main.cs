@@ -68,7 +68,11 @@ namespace AI_Character_Editor
             this.DefUnit7.SelectedItem = aiLord.Personality.DefUnit7.ToString();
             this.DefUnit8.SelectedItem = aiLord.Personality.DefUnit8.ToString();
 
-            //DefAffinity
+            this.trackBar_DefRecruitAffinity.Value = aiLord.Personality.DefRecruitAffinity;
+            this.txtBox_DefRecruitAffinity.Text = Convert.ToString(this.trackBar_DefRecruitAffinity.Value);
+            //aiLord.Personality.
+
+            //Offensive stuff
         }
 
         private void Fill_AI_Lords()
@@ -222,7 +226,7 @@ namespace AI_Character_Editor
             Enum.TryParse<UnitType>(this.DefUnit8.GetItemText(this.DefUnit8.SelectedItem), out unitType);
             aiLord.Personality.DefUnit8 = unitType;
 
-            //aiLord.Personality.DefRecruitAffinity = 
+            aiLord.Personality.DefRecruitAffinity = this.trackBar_DefRecruitAffinity.Value; 
         }
 
         private void open_Existing_Click(object sender, EventArgs e)
@@ -237,7 +241,14 @@ namespace AI_Character_Editor
             fileDialog.InitialDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             if(fileDialog.ShowDialog() == DialogResult.OK)
-            {                
+            {
+                this.aicc.Clear();
+
+                using (Stream stream = new FileStream(fileDialog.FileName, FileMode.Open, FileAccess.Read))
+                    this.aicc.Read(stream);
+
+                this.AI_Lords.SelectedIndex = 0;
+                this.UpdateControls();
             }
         }
 
@@ -328,6 +339,28 @@ namespace AI_Character_Editor
                 Enum.TryParse<AICIndex>(this.AI_Lords.Items[x].ToString(), out lord);
 
                 this.SaveChangesIntern(lord);
+            }
+        }
+
+        private void trackBar_DefRecruitAffinity_Scroll(object sender, EventArgs e) => this.txtBox_DefRecruitAffinity.Text = Convert.ToString(this.trackBar_DefRecruitAffinity.Value);
+
+        private void txtBox_DefRecruitAffinity_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.trackBar_DefRecruitAffinity.Value = Convert.ToInt32(this.txtBox_DefRecruitAffinity.Text);
+            }
+            catch
+            {
+                //User is being stupid again...
+            }
+        }
+
+        private void txtBox_DefRecruitAffinity_KeyPress(object sender, KeyPressEventArgs e)
+        {     
+            if (!Char.IsControl(e.KeyChar) && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

@@ -83,12 +83,16 @@
             this.lbl_OffUnit3 = new System.Windows.Forms.Label();
             this.OffUnit3 = new System.Windows.Forms.ComboBox();
             this.lbl_Offence = new System.Windows.Forms.Label();
+            this.lbl_DefRecruitAffinity = new System.Windows.Forms.Label();
+            this.trackBar_DefRecruitAffinity = new System.Windows.Forms.TrackBar();
+            this.txtBox_DefRecruitAffinity = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_Patrols)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_WallDef)).BeginInit();
             this.pnl_Defence.SuspendLayout();
             this.pnl_Offence.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FirstAttackForceSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_AttackForceIncreaseStatic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_DefRecruitAffinity)).BeginInit();
             this.SuspendLayout();
             // 
             // AI_Lords
@@ -330,6 +334,9 @@
             // pnl_Defence
             // 
             this.pnl_Defence.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_Defence.Controls.Add(this.lbl_DefRecruitAffinity);
+            this.pnl_Defence.Controls.Add(this.trackBar_DefRecruitAffinity);
+            this.pnl_Defence.Controls.Add(this.txtBox_DefRecruitAffinity);
             this.pnl_Defence.Controls.Add(this.lbl_DefUnit8);
             this.pnl_Defence.Controls.Add(this.lbl_Patrols);
             this.pnl_Defence.Controls.Add(this.DefUnit8);
@@ -354,7 +361,7 @@
             this.pnl_Defence.Controls.Add(this.DefUnit3);
             this.pnl_Defence.Location = new System.Drawing.Point(9, 69);
             this.pnl_Defence.Name = "pnl_Defence";
-            this.pnl_Defence.Size = new System.Drawing.Size(613, 267);
+            this.pnl_Defence.Size = new System.Drawing.Size(613, 345);
             this.pnl_Defence.TabIndex = 26;
             // 
             // lbl_Defence
@@ -622,6 +629,36 @@
             this.lbl_Offence.Text = "Offence";
             this.lbl_Offence.Visible = false;
             // 
+            // lbl_DefRecruitAffinity
+            // 
+            this.lbl_DefRecruitAffinity.AutoSize = true;
+            this.lbl_DefRecruitAffinity.Location = new System.Drawing.Point(9, 271);
+            this.lbl_DefRecruitAffinity.Name = "lbl_DefRecruitAffinity";
+            this.lbl_DefRecruitAffinity.Size = new System.Drawing.Size(74, 13);
+            this.lbl_DefRecruitAffinity.TabIndex = 25;
+            this.lbl_DefRecruitAffinity.Text = "Recruit affinity";
+            // 
+            // trackBar_DefRecruitAffinity
+            // 
+            this.trackBar_DefRecruitAffinity.Location = new System.Drawing.Point(80, 271);
+            this.trackBar_DefRecruitAffinity.Maximum = 100;
+            this.trackBar_DefRecruitAffinity.Name = "trackBar_DefRecruitAffinity";
+            this.trackBar_DefRecruitAffinity.Size = new System.Drawing.Size(408, 45);
+            this.trackBar_DefRecruitAffinity.TabIndex = 26;
+            this.trackBar_DefRecruitAffinity.TickFrequency = 5;
+            this.trackBar_DefRecruitAffinity.Value = 20;
+            this.trackBar_DefRecruitAffinity.Scroll += new System.EventHandler(this.trackBar_DefRecruitAffinity_Scroll);
+            // 
+            // txtBox_DefRecruitAffinity
+            // 
+            this.txtBox_DefRecruitAffinity.Location = new System.Drawing.Point(242, 317);
+            this.txtBox_DefRecruitAffinity.Name = "txtBox_DefRecruitAffinity";
+            this.txtBox_DefRecruitAffinity.Size = new System.Drawing.Size(77, 20);
+            this.txtBox_DefRecruitAffinity.TabIndex = 27;
+            this.txtBox_DefRecruitAffinity.Text = "1";
+            this.txtBox_DefRecruitAffinity.TextChanged += new System.EventHandler(this.txtBox_DefRecruitAffinity_TextChanged);
+            this.txtBox_DefRecruitAffinity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_DefRecruitAffinity_KeyPress);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -646,6 +683,7 @@
             this.pnl_Offence.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FirstAttackForceSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_AttackForceIncreaseStatic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_DefRecruitAffinity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -707,6 +745,9 @@
         private System.Windows.Forms.Label lbl_AttackForceIncreaseMultiplier;
         private System.Windows.Forms.TextBox txtBox_AttackForceIncreaseMultiplier;
         private System.Windows.Forms.Label lbl_Offence;
+        private System.Windows.Forms.Label lbl_DefRecruitAffinity;
+        private System.Windows.Forms.TrackBar trackBar_DefRecruitAffinity;
+        private System.Windows.Forms.TextBox txtBox_DefRecruitAffinity;
     }
 }
 
