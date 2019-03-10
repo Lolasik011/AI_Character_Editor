@@ -60,11 +60,14 @@
     <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AIWriter.cs">
       <Link>AICharacters\AIWriter.cs</Link>
     </Compile>
+    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\TargetingType.cs">
+      <Link>AICharacters\PersonalityEnums\TargetingType.cs</Link>
+    </Compile>
+    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\UnitType.cs">
+      <Link>AICharacters\PersonalityEnums\UnitType.cs</Link>
+    </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\RWAttributes.cs">
       <Link>AICharacters\RWAttributes.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\UnitType.cs">
-      <Link>AICharacters\UnitType.cs</Link>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

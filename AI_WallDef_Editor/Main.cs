@@ -40,7 +40,7 @@ namespace AI_Character_Editor
 
             //read in original ai file
             using (Stream stream = asm.GetManifestResourceStream("AI_Character_Editor.Resources.vanilla.aic"))
-                this.aicc.Read(stream);
+                this.aicc.Read(stream, true);
 
             this.UpdateControls();
         }
@@ -245,7 +245,7 @@ namespace AI_Character_Editor
                 this.aicc.Clear();
 
                 using (Stream stream = new FileStream(fileDialog.FileName, FileMode.Open, FileAccess.Read))
-                    this.aicc.Read(stream);
+                    this.aicc.Read(stream, true);
 
                 this.AI_Lords.SelectedIndex = 0;
                 this.UpdateControls();

@@ -14,18 +14,6 @@ namespace IDAParser
             try
             {
                 ParseAll();
-
-                AICCollection aicc = new AICCollection();
-                using (FileStream fs = new FileStream("vanilla.aic", FileMode.Open))
-                {
-                    aicc.Read(fs);
-                }
-
-
-                using (FileStream fs = new FileStream("vanilla2.aic", FileMode.Create))
-                {
-                     aicc.Write(fs);
-                }
             }
             catch (Exception e)
             {
