@@ -199,7 +199,7 @@ namespace AI_Character_Editor
 
         private void SaveChangesIntern(AICIndex lord)
         {
-            UnitType unitType = UnitType.None;
+            Unit unitType = Unit.None;
 
             AICharacter aiLord = this.aicc[lord];
 
@@ -209,21 +209,21 @@ namespace AI_Character_Editor
             aiLord.Personality.DefTotal = this.trackBar_Patrols.Value + this.trackBar_WallDef.Value;
             aiLord.Personality.DefWalls = this.trackBar_WallDef.Value;
 
-            Enum.TryParse<UnitType>(this.DefUnit1.GetItemText(this.DefUnit1.SelectedItem), out unitType);
+            Enum.TryParse<Unit>(this.DefUnit1.GetItemText(this.DefUnit1.SelectedItem), out unitType);
             aiLord.Personality.DefUnit1 = unitType;
-            Enum.TryParse<UnitType>(this.DefUnit2.GetItemText(this.DefUnit2.SelectedItem), out unitType);
+            Enum.TryParse<Unit>(this.DefUnit2.GetItemText(this.DefUnit2.SelectedItem), out unitType);
             aiLord.Personality.DefUnit2 = unitType;
-            Enum.TryParse<UnitType>(this.DefUnit3.GetItemText(this.DefUnit3.SelectedItem), out unitType);
+            Enum.TryParse<Unit>(this.DefUnit3.GetItemText(this.DefUnit3.SelectedItem), out unitType);
             aiLord.Personality.DefUnit3 = unitType;
-            Enum.TryParse<UnitType>(this.DefUnit4.GetItemText(this.DefUnit4.SelectedItem), out unitType);
+            Enum.TryParse<Unit>(this.DefUnit4.GetItemText(this.DefUnit4.SelectedItem), out unitType);
             aiLord.Personality.DefUnit4 = unitType;
-            Enum.TryParse<UnitType>(this.DefUnit5.GetItemText(this.DefUnit5.SelectedItem), out unitType);
+            Enum.TryParse<Unit>(this.DefUnit5.GetItemText(this.DefUnit5.SelectedItem), out unitType);
             aiLord.Personality.DefUnit5 = unitType;
-            Enum.TryParse<UnitType>(this.DefUnit6.GetItemText(this.DefUnit6.SelectedItem), out unitType);
+            Enum.TryParse<Unit>(this.DefUnit6.GetItemText(this.DefUnit6.SelectedItem), out unitType);
             aiLord.Personality.DefUnit6 = unitType;
-            Enum.TryParse<UnitType>(this.DefUnit7.GetItemText(this.DefUnit7.SelectedItem), out unitType);
+            Enum.TryParse<Unit>(this.DefUnit7.GetItemText(this.DefUnit7.SelectedItem), out unitType);
             aiLord.Personality.DefUnit7 = unitType;
-            Enum.TryParse<UnitType>(this.DefUnit8.GetItemText(this.DefUnit8.SelectedItem), out unitType);
+            Enum.TryParse<Unit>(this.DefUnit8.GetItemText(this.DefUnit8.SelectedItem), out unitType);
             aiLord.Personality.DefUnit8 = unitType;
 
             aiLord.Personality.DefRecruitAffinity = this.trackBar_DefRecruitAffinity.Value; 

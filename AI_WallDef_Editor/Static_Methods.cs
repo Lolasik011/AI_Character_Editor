@@ -7,7 +7,7 @@ namespace AI_Character_Editor
 {
     public static class Static_Methods
     {
-        public static List<string> GetUnitTypes() => Enum.GetNames(typeof(UCP.AICharacters.UnitType)).ToList();
+        public static List<string> GetUnitTypes() => Enum.GetNames(typeof(UCP.AICharacters.Unit)).ToList();
         public static string ToHex(int value) => String.Format("0x{0:X}", value);
         public static int FromHex(string value)
         {
