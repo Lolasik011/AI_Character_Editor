@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Resource.cs">
+      <Link>AICharacters\PersonalityEnums\Resource.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\Unit.cs">
+      <Link>AICharacters\PersonalityEnums\Unit.cs</Link>
+    </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\AICCollection.cs">
       <Link>AICharacters\AICCollection.cs</Link>
     </Compile>
@@ -70,9 +76,6 @@
     </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\TargetingType.cs">
       <Link>AICharacters\PersonalityEnums\TargetingType.cs</Link>
-    </Compile>
-    <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\PersonalityEnums\UnitType.cs">
-      <Link>AICharacters\PersonalityEnums\UnitType.cs</Link>
     </Compile>
     <Compile Include="..\UnofficialCrusaderPatch\UnofficialCrusaderPatch\AICharacters\RWAttributes.cs">
       <Link>AICharacters\RWAttributes.cs</Link>
